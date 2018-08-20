@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Add Word
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form [formGroup]="addWordForm" novalidate>
+
+    <ion-item>
+      <ion-label floating>Name</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+    <div class="error-container" *ngIf="!addWordForm.controls.name.valid && (addWordForm.controls.name.dirty || addWordForm.controls.name.touched)">
+      <span class="error">
+        Required field.
+      </span>
+    </div>
+
+    <ion-item>
+      <ion-label floating>Description</ion-label>
+      <ion-input type="text" formControlName="description"></ion-input>
+    </ion-item>
+    <div class="error-container" *ngIf="!addWordForm.controls.description.valid && (addWordForm.controls.description.dirty || addWordForm.controls.description.touched)">
+      <span class="error">
+        Required field.
+      </span>
+    </div>
+
+    <div padding>
+      <button ion-button block type="submit" [disabled]="!addWordForm.valid" (click)="onSubmit()">Save</button>
+    </div>
+
+
+  </form>
+
+</ion-content>

@@ -1,0 +1,15 @@
+page-login {
+    ion-content {
+        background-color: color($colors, primary);
+    }
+    p {
+        font-weight: 900;
+        font-size: 5rem;
+        text-align: center;
+        color: $text-color;
+        -webkit-text-stroke: 1px #000;
+    }
+    .align-center {
+        vertical-align: middle;
+    }
+}

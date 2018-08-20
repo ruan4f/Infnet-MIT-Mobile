@@ -1,0 +1,9 @@
+page-register {
+    ion-header {
+        background-color: color($colors, primary);
+    }
+    .toolbar-title-md,
+    .back-button {
+        color: #fff;
+    }
+}

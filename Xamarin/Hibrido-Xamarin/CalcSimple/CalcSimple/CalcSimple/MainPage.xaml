@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CalcSimple"
+             x:Class="CalcSimple.MainPage">
+
+    <ContentPage.Resources>
+        <StyleSheetExtension Source="/Styles/style.css"/>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <Grid BackgroundColor="#1F1F1F">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label x:Name="LblResult" Text="0" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Grid.ColumnSpan="3" Grid.Row="0" Grid.Column="0"/>
+
+            <Button Text="/" BackgroundColor="#121412" Grid.Row="0" Grid.Column="3" Clicked="BtnDiv_Clicked"/>
+            <Button Text="X" BackgroundColor="#121412" Grid.Row="1" Grid.Column="3" Clicked="BtnMult_Clicked"/>
+            <Button Text="-" BackgroundColor="#121412" Grid.Row="2" Grid.Column="3" Clicked="BtnSub_Clicked"/>
+            <Button Text="+" BackgroundColor="#121412" Grid.Row="3" Grid.Column="3" Clicked="BtnSum_Clicked"/>
+            <Button Text="=" BackgroundColor="#121412" Grid.Row="4" Grid.Column="3" Clicked="BtnEqual_Clicked"/>
+
+            <Button Text="7" BackgroundColor="#060606" Grid.Row="1" Grid.Column="0" Clicked="BtnSeven_Clicked"/>
+            <Button Text="8" BackgroundColor="#060606" Grid.Row="1" Grid.Column="1" Clicked="BtnEight_Clicked"/>
+            <Button Text="9" BackgroundColor="#060606" Grid.Row="1" Grid.Column="2" Clicked="BtnNine_Clicked"/>
+
+            <Button Text="4" BackgroundColor="#060606" Grid.Row="2" Grid.Column="0" Clicked="BtnFour_Clicked"/>
+            <Button Text="5" BackgroundColor="#060606" Grid.Row="2" Grid.Column="1" Clicked="BtnFive_Clicked"/>
+            <Button Text="6" BackgroundColor="#060606" Grid.Row="2" Grid.Column="2" Clicked="BtnSix_Clicked"/>
+
+            <Button Text="1" BackgroundColor="#060606" Grid.Row="3" Grid.Column="0" Clicked="BtnOne_Clicked"/>
+            <Button Text="2" BackgroundColor="#060606" Grid.Row="3" Grid.Column="1" Clicked="BtnTwo_Clicked"/>
+            <Button Text="3" BackgroundColor="#060606" Grid.Row="3" Grid.Column="2" Clicked="BtnThree_Clicked"/>
+
+            <Button Text="0" BackgroundColor="#060606" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Clicked="BtnZero_Clicked"/>
+
+            <Button Text="C" BackgroundColor="#121412" Grid.Row="4" Grid.Column="2" Clicked="BtnC_Clicked"/>
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>

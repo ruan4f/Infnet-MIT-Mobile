@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar transparent>
+    <ion-title>Register User</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <form [formGroup]="form" novalidate>
+    <ion-item>
+      <ion-label floating>E-mail</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+
+    <div class="error-container" *ngIf="!form.controls.email.valid && (form.controls.email.dirty || form.controls.email.touched)">
+      <span class="error">
+        Invalid E-mail.
+      </span>
+    </div>
+
+    <ion-item>
+      <ion-label floating>Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+
+    <div class="error-container" *ngIf="!form.controls.password.valid && (form.controls.password.dirty || form.controls.password.touched)">
+      <span class="error">
+        Required field.
+      </span>
+    </div>
+
+    <div padding>
+      <button ion-button full [disabled]="!form.valid" (click)="createUser()">Create</button>
+    </div>
+
+  </form>
+</ion-content>

@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar color="primary" transparent>
+    <ion-title>
+      Edit Word
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form [formGroup]="editWordForm" novalidate>
+
+    <ion-item>
+      <ion-label floating>Name</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+    <div class="error-container" *ngIf="!editWordForm.controls.name.valid && (editWordForm.controls.name.dirty || editWordForm.controls.name.touched)">
+      <span class="error">
+        Required field.
+      </span>
+    </div>
+
+    <ion-item>
+      <ion-label floating>Description</ion-label>
+      <ion-input type="text" formControlName="description"></ion-input>
+    </ion-item>
+    <div class="error-container" *ngIf="!editWordForm.controls.description.valid && (editWordForm.controls.description.dirty || editWordForm.controls.description.touched)">
+      <span class="error">
+        Required field.
+      </span>
+    </div>
+
+    <div padding>
+      <button ion-button block type="submit" [disabled]="!editWordForm.valid" (click)="onSubmit()">Save</button>
+    </div>
+
+  </form>
+
+</ion-content>
