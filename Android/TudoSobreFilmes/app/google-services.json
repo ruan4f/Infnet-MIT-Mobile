@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "264697963017",
+    "firebase_url": "https://tudosobrefilmes-ff126.firebaseio.com",
+    "project_id": "tudosobrefilmes-ff126",
+    "storage_bucket": "tudosobrefilmes-ff126.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:264697963017:android:e38e13c2d49fb985",
+        "android_client_info": {
+          "package_name": "com.ruanferreira.tudosobrefilmes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "264697963017-bh2mksgh1dqkjamtfaodfjh5nb2nr3rj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ruanferreira.tudosobrefilmes",
+            "certificate_hash": "f9ed9bb24ac9c6a808783e7ffe82657472321e78"
+          }
+        },
+        {
+          "client_id": "264697963017-27d2cpdi8ovm0bmf6pr5gbpeisbg56vb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCtmHntcg3Sq3cCsi3BWeeVOD5ZIQX5zs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "264697963017-27d2cpdi8ovm0bmf6pr5gbpeisbg56vb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
