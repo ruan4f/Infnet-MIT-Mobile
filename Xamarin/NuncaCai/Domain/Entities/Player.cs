@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain.Entities
+namespace DomainModel
+    .Entities
 {
     public class Player
     {
