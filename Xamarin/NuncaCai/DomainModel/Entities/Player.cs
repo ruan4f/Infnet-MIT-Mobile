@@ -9,6 +9,8 @@ namespace DomainModel.Entities
 
         public string Name { get; set; }
 
+        public int Point { get; set; }
+
         public DateTime RegistrationDate { get; set; }
     }
 }

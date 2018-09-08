@@ -14,5 +14,7 @@ namespace DomainModel.Entities
 
         public Player Winner { get; set; }
 
+        public DateTime MatchDate { get; set; }
+
     }
 }
