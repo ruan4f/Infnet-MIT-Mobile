@@ -21,11 +21,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuncaCaiMobile.UWP", "Nunca
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NuncaCaiMobile", "NuncaCaiMobile\NuncaCaiMobile\NuncaCaiMobile.csproj", "{E81C7CFD-C7C4-4549-A0A6-5EE1F637832A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainModel", "DomainModel\DomainModel.csproj", "{B5B8D479-B630-490E-ACD2-A4EE2D4237C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainModel", "DomainModel\DomainModel.csproj", "{B5B8D479-B630-490E-ACD2-A4EE2D4237C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainService", "DomainService\DomainService.csproj", "{9BD1EDF3-388D-4D0E-91A4-3E66C1C38F2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainService", "DomainService\DomainService.csproj", "{9BD1EDF3-388D-4D0E-91A4-3E66C1C38F2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.Data", "Infra.Data\Infra.Data.csproj", "{DC80E44E-401F-4E5F-8759-A5959E724DA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.Data", "Infra.Data\Infra.Data.csproj", "{DC80E44E-401F-4E5F-8759-A5959E724DA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

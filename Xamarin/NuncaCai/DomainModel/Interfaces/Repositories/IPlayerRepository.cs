@@ -5,14 +5,7 @@ using System.Text;
 
 namespace DomainModel.Interfaces.Repositories
 {
-    public interface IPlayerRepository
-    {
-        void Add(Player player);
-
-        void Update(Player player);
-
-        IEnumerable<Player> GetAll();
-
-        Player GetById(Guid id);
+    public interface IPlayerRepository : IRepository<Player>
+    {        
     }
 }
