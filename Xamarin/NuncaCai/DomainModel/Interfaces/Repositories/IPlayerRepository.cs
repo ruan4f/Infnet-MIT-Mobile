@@ -2,14 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DomainModel.Interfaces.Repositories
 {
     public interface IPlayerRepository
     {
-        void Add(Player match);
+        Task AddSync(Player match);
         void Update(Player match);
-        Player GetById(Guid id);
+        Task<Player> GetByIdSync(Guid id);
         IEnumerable<Player> GetAll();
     }
 }

@@ -7,28 +7,29 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DomainModel.Entities;
 using Infra.Data.Context;
+using NuncaCai.Application.Interfaces;
 
 namespace NuncaCai.Api.REST.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/players")]
     [ApiController]
     public class PlayersController : ControllerBase
     {
-        private readonly EntityContext _context;
+        private readonly IPlayerAppService _service;
 
-        public PlayersController(EntityContext context)
+        public PlayersController(IPlayerAppService service)
         {
-            _context = context;
+            _service = service;
         }
 
         // GET: api/Players
         [HttpGet]
         public IEnumerable<Player> GetPlayers()
         {
-            return _context.Players;
+            return _service.GetAll();
         }
 
-        // GET: api/Players/5
+        //GET: api/Players/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPlayer([FromRoute] Guid id)
         {
@@ -37,7 +38,7 @@ namespace NuncaCai.Api.REST.Controllers
                 return BadRequest(ModelState);
             }
 
-            var player = await _context.Players.FindAsync(id);
+            var player = await _service.GetByIdSync(id);
 
             if (player == null)
             {
@@ -48,41 +49,41 @@ namespace NuncaCai.Api.REST.Controllers
         }
 
         // PUT: api/Players/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutPlayer([FromRoute] Guid id, [FromBody] Player player)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutPlayer([FromRoute] Guid id, [FromBody] Player player)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            if (id != player.Id)
-            {
-                return BadRequest();
-            }
+        //    if (id != player.Id)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            _context.Entry(player).State = EntityState.Modified;
+        //    _context.Entry(player).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PlayerExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!PlayerExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
-        // POST: api/Players
+        //POST: api/Players
         [HttpPost]
         public async Task<IActionResult> PostPlayer([FromBody] Player player)
         {
@@ -91,36 +92,35 @@ namespace NuncaCai.Api.REST.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Players.Add(player);
-            await _context.SaveChangesAsync();
+            await _service.AddSync(player);
 
             return CreatedAtAction("GetPlayer", new { id = player.Id }, player);
         }
 
         // DELETE: api/Players/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePlayer([FromRoute] Guid id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> DeletePlayer([FromRoute] Guid id)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            var player = await _context.Players.FindAsync(id);
-            if (player == null)
-            {
-                return NotFound();
-            }
+        //    var player = await _context.Players.FindAsync(id);
+        //    if (player == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            _context.Players.Remove(player);
-            await _context.SaveChangesAsync();
+        //    _context.Players.Remove(player);
+        //    await _context.SaveChangesAsync();
 
-            return Ok(player);
-        }
+        //    return Ok(player);
+        //}
 
-        private bool PlayerExists(Guid id)
-        {
-            return _context.Players.Any(e => e.Id == id);
-        }
+        //private bool PlayerExists(Guid id)
+        //{
+        //    return _context.Players.Any(e => e.Id == id);
+        //}
     }
 }

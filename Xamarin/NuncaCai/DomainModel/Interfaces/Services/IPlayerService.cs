@@ -2,19 +2,20 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DomainModel.Interfaces.Services
 {
     public interface IPlayerService
     {
 
-        void Add(Player player);
+        Task AddSync(Player player);
 
         void Update(Player player);
 
         IEnumerable<Player> GetAll();
 
-        Player GetById(Guid id);
+        Task<Player> GetByIdSync(Guid id);
 
     }
 }

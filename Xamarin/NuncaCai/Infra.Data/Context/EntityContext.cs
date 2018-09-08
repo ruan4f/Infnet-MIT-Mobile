@@ -8,14 +8,14 @@ namespace Infra.Data.Context
     {
         public virtual DbSet<Player> Players { get; set; }
         public virtual DbSet<Match> Matches { get; set; }
-        
-        //public EntityContext(DbContextOptions<EntityContext> options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Server=.\SQLExpress;Database=NuncaCai;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer(@"Data Source=.\SQLEXPRESS;Initial Catalog=NuncaCai;Integrated Security=True;");
+
+                //optionsBuilder.UseSqlServer(@"Server=.\SQLExpress;Database=NuncaCai;Trusted_Connection=True;");
             }
         }
 

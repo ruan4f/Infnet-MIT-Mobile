@@ -4,6 +4,7 @@ using Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Infra.Data.Repository
 {
@@ -16,10 +17,10 @@ namespace Infra.Data.Repository
             _context = context;
         }
 
-        public void Add(Player player)
+        public async Task AddSync(Player player)
         {
-            _context.Add(player);
-            _context.SaveChanges();
+            await _context.AddAsync(player);
+            await _context.SaveChangesAsync();
         }
 
         public IEnumerable<Player> GetAll()
@@ -27,9 +28,9 @@ namespace Infra.Data.Repository
             return _context.Players;
         }
 
-        public Player GetById(Guid id)
+        public async Task<Player> GetByIdSync(Guid id)
         {
-            return _context.Players.Find(id);
+            return await _context.Players.FindAsync(id);
         }
 
         public void Update(Player player)

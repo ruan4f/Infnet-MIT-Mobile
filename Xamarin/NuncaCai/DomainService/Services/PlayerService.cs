@@ -3,6 +3,7 @@ using DomainModel.Interfaces.Repositories;
 using DomainModel.Interfaces.Services;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DomainService.Services
 {
@@ -16,9 +17,9 @@ namespace DomainService.Services
         }
 
 
-        public void Add(Player player)
+        public async Task AddSync(Player player)
         {
-            _repository.Add(player);
+            await _repository.AddSync(player);
         }
 
         public IEnumerable<Player> GetAll()
@@ -26,9 +27,9 @@ namespace DomainService.Services
             return _repository.GetAll();
         }
 
-        public Player GetById(Guid id)
+        public async Task<Player> GetByIdSync(Guid id)
         {
-            return _repository.GetById(id);
+            return await _repository.GetByIdSync(id);
         }
 
         public void Update(Player player)
