@@ -6,9 +6,10 @@ namespace Infra.Data.Context
 {
     public class EntityContext : DbContext
     {
-
         public virtual DbSet<Player> Players { get; set; }
         public virtual DbSet<Match> Matches { get; set; }
+        
+        //public EntityContext(DbContextOptions<EntityContext> options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
