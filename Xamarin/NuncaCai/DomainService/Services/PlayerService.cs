@@ -32,9 +32,9 @@ namespace DomainService.Services
             return await _repository.GetByIdSync(id);
         }
 
-        public void Update(Player player)
+        public async Task UpdateSync(Player player)
         {
-            _repository.Update(player);
+            await _repository.UpdateSync(player);
         }
     }
 }

@@ -33,13 +33,13 @@ namespace Infra.Data.Repository
             return await _context.Players.FindAsync(id);
         }
 
-        public void Update(Player player)
+        public async Task UpdateSync(Player player)
         {
             var entry = _context.Entry(player);
             entry.State = EntityState.Modified;
 
             _context.Players.Attach(player);        
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
     }
 }

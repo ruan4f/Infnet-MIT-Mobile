@@ -11,7 +11,7 @@ namespace DomainModel.Interfaces.Services
 
         Task AddSync(Player player);
 
-        void Update(Player player);
+        Task UpdateSync(Player player);
 
         IEnumerable<Player> GetAll();
 

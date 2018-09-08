@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using DomainModel.Entities;
 using DomainModel.Interfaces.Services;
 using NuncaCai.Application.Interfaces;
@@ -15,24 +16,24 @@ namespace NuncaCai.Application.Services
             _matchService = matchService;
         }
 
-        public void Add(Match match)
+        public async Task AddSync(Match match)
         {
-            throw new NotImplementedException();
+            await _matchService.AddSync(match);
         }
 
         public IEnumerable<Match> GetAll()
         {
-            throw new NotImplementedException();
+            return _matchService.GetAll();
         }
 
-        public Match GetById(Guid id)
+        public async Task<Match> GetByIdSync(Guid id)
         {
-            throw new NotImplementedException();
+            return await _matchService.GetByIdSync(id);
         }
 
-        public void Update(Match match)
+        public async Task UpdateSync(Match match)
         {
-            throw new NotImplementedException();
+            await _matchService.UpdateSync(match);
         }
     }
 }

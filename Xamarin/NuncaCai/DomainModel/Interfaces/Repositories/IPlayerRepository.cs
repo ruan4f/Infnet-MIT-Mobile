@@ -9,7 +9,7 @@ namespace DomainModel.Interfaces.Repositories
     public interface IPlayerRepository
     {
         Task AddSync(Player match);
-        void Update(Player match);
+        Task UpdateSync(Player match);
         Task<Player> GetByIdSync(Guid id);
         IEnumerable<Player> GetAll();
     }

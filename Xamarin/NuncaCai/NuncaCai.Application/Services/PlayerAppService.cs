@@ -3,7 +3,6 @@ using DomainModel.Interfaces.Services;
 using NuncaCai.Application.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace NuncaCai.Application.Services
@@ -33,9 +32,9 @@ namespace NuncaCai.Application.Services
             return await _playerService.GetByIdSync(id);
         }
 
-        public void Update(Player player)
+        public async Task UpdateSync(Player player)
         {
-            _playerService.Update(player);
+            await _playerService.UpdateSync(player);
         }
     }
 }

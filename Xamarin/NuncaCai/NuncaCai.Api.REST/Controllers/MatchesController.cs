@@ -11,66 +11,66 @@ using NuncaCai.Application.Interfaces;
 
 namespace NuncaCai.Api.REST.Controllers
 {
-    [Route("api/players")]
+    [Route("api/matches")]
     [ApiController]
-    public class PlayersController : ControllerBase
+    public class MatchesController : ControllerBase
     {
-        private readonly IPlayerAppService _service;
+        private readonly IMatchAppService _service;
 
-        public PlayersController(IPlayerAppService service)
+        public MatchesController(IMatchAppService service)
         {
             _service = service;
         }
 
-        // GET: api/Players
+        // GET: api/Matches
         [HttpGet]
-        public IEnumerable<Player> GetPlayers()
+        public IEnumerable<Match> GetMatches()
         {
             return _service.GetAll();
         }
 
-        //GET: api/Players/5
+        // GET: api/Matches/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetPlayer([FromRoute] Guid id)
+        public async Task<IActionResult> GetMatch([FromRoute] Guid id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var player = await _service.GetByIdSync(id);
+            var match = await _service.GetByIdSync(id);
 
-            if (player == null)
+            if (match == null)
             {
                 return NotFound();
             }
 
-            return Ok(player);
+            return Ok(match);
         }
 
-        // PUT: api/Players/5
+        // PUT: api/Matches/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPlayer([FromRoute] Guid id, [FromBody] Player player)
+        public async Task<IActionResult> PutMatch([FromRoute] Guid id, [FromBody] Match match)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != player.Id)
+            if (id != match.Id)
             {
                 return BadRequest();
             }
 
-            await _service.UpdateSync(player);
-                       
+            await _service.UpdateSync(match);
+
             //try
             //{
             //    await _context.SaveChangesAsync();
             //}
             //catch (DbUpdateConcurrencyException)
             //{
-            //    if (!PlayerExists(id))
+            //    if (!MatchExists(id))
             //    {
             //        return NotFound();
             //    }
@@ -83,44 +83,44 @@ namespace NuncaCai.Api.REST.Controllers
             return NoContent();
         }
 
-        //POST: api/Players
+        // POST: api/Matches
         [HttpPost]
-        public async Task<IActionResult> PostPlayer([FromBody] Player player)
+        public async Task<IActionResult> PostMatch([FromBody] Match match)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            await _service.AddSync(player);
+            await _service.AddSync(match);
 
-            return CreatedAtAction("GetPlayer", new { id = player.Id }, player);
+            return CreatedAtAction("GetMatch", new { id = match.Id }, match);
         }
 
-        // DELETE: api/Players/5
+        // DELETE: api/Matches/5
         //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeletePlayer([FromRoute] Guid id)
+        //public async Task<IActionResult> DeleteMatch([FromRoute] Guid id)
         //{
         //    if (!ModelState.IsValid)
         //    {
         //        return BadRequest(ModelState);
         //    }
 
-        //    var player = await _context.Players.FindAsync(id);
-        //    if (player == null)
+        //    var match = await _context.Matches.FindAsync(id);
+        //    if (match == null)
         //    {
         //        return NotFound();
         //    }
 
-        //    _context.Players.Remove(player);
+        //    _context.Matches.Remove(match);
         //    await _context.SaveChangesAsync();
 
-        //    return Ok(player);
+        //    return Ok(match);
         //}
 
-        //private bool PlayerExists(Guid id)
+        //private bool MatchExists(Guid id)
         //{
-        //    return _context.Players.Any(e => e.Id == id);
+        //    return _context.Matches.Any(e => e.Id == id);
         //}
     }
 }

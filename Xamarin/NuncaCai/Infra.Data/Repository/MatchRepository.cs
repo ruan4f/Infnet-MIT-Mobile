@@ -5,10 +5,11 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Infra.Data.Repository
 {
-    public class MatchRepository:IMatchRepository 
+    public class MatchRepository : IMatchRepository
     {
         private readonly EntityContext _context;
 
@@ -17,10 +18,10 @@ namespace Infra.Data.Repository
             _context = context;
         }
 
-        public void Add(Match match)
+        public async Task AddSync(Match match)
         {
-            _context.Add(match);
-            _context.SaveChanges();
+            await _context.AddAsync(match);
+            await _context.SaveChangesAsync();
         }
 
         public IEnumerable<Match> GetAll()
@@ -28,18 +29,18 @@ namespace Infra.Data.Repository
             return _context.Matches;
         }
 
-        public Match GetById(Guid id)
+        public async Task<Match> GetByIdSync(Guid id)
         {
-            return _context.Matches.Find(id);
+            return await _context.Matches.FindAsync(id);
         }
 
-        public void Update(Match match)
+        public async Task UpdateSync(Match match)
         {
             var entry = _context.Entry(match);
             entry.State = EntityState.Modified;
 
             _context.Matches.Attach(match);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
     }
 }

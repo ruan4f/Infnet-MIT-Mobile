@@ -3,6 +3,7 @@ using DomainModel.Interfaces.Repositories;
 using DomainModel.Interfaces.Services;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DomainService.Services
 {
@@ -15,9 +16,9 @@ namespace DomainService.Services
             _repository = repository;
         }
 
-        public void Add(Match match)
+        public async Task AddSync(Match match)
         {
-            _repository.Add(match);
+            await _repository.AddSync(match);
         }
 
         public IEnumerable<Match> GetAll()
@@ -25,14 +26,14 @@ namespace DomainService.Services
             return _repository.GetAll();
         }
 
-        public Match GetById(Guid id)
+        public async Task<Match> GetByIdSync(Guid id)
         {
-            return _repository.GetById(id);
+            return await _repository.GetByIdSync(id);
         }
 
-        public void Update(Match match)
+        public async Task UpdateSync(Match match)
         {
-            _repository.Update(match);
+            await _repository.UpdateSync(match);
         }
     }
 }
