@@ -1,6 +1,7 @@
 ﻿using DomainModel.Entities;
 using DomainModel.Interfaces.Repositories;
 using DomainModel.Interfaces.Services;
+using System;
 using System.Collections.Generic;
 
 namespace DomainService.Services
@@ -22,6 +23,11 @@ namespace DomainService.Services
         public IEnumerable<Match> GetAll()
         {
             return _repository.GetAll();
+        }
+
+        public Match GetById(Guid id)
+        {
+            return _repository.GetById(id);
         }
 
         public void Update(Match match)

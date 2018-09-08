@@ -10,5 +10,6 @@ namespace DomainModel.Interfaces.Services
         void Add(Match match);
         void Update(Match match);
         IEnumerable<Match> GetAll();
+        Match GetById(Guid id);
     }
 }
