@@ -17,22 +17,23 @@ namespace NuncaCaiMobile
 
         private void Btn_Players_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new PlayersView());
+            Navigation.PushAsync(new PlayersPage());
         }
 
         private void Btn_Sort_Clicked(object sender, EventArgs e)
         {
+            Navigation.PushAsync(new SortPage());
 
         }
 
         private void Btn_MatchHistory_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new MatchHistoryPage());
         }
 
         private void Btn_Ranking_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new RankingView());
+            Navigation.PushAsync(new RankingPage());
         }
     }
 }

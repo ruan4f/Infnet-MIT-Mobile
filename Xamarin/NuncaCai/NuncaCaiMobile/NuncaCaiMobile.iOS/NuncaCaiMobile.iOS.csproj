@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C5728545-1EB4-4E54-AF4C-BA16A12A7B47}</ProjectGuid>
+    <ProjectGuid>{36D5B9CE-ECA0-467C-9AF3-ABE1BCA3EBF2}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
     <OutputType>Exe</OutputType>
@@ -148,15 +148,12 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite">
-      <Version>2.1.2</Version>
-    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\NuncaCaiMobile\NuncaCaiMobile.csproj">
-      <Project>{6C2C143A-51D6-4FBE-A5EA-3B867386CAA6}</Project>
+      <Project>{81B8F4E2-AFF7-4BF6-AE3E-B2A530045309}</Project>
       <Name>NuncaCaiMobile</Name>
     </ProjectReference>
   </ItemGroup>

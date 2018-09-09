@@ -9,12 +9,12 @@ using Xamarin.Forms.Xaml;
 
 namespace NuncaCaiMobile.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PlayersView : ContentPage
-    {
-        public PlayersView()
-        {
-            InitializeComponent();
-        }
-    }
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class PlayersPage : ContentPage
+	{
+		public PlayersPage ()
+		{
+			InitializeComponent ();
+		}
+	}
 }

@@ -2,14 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:NuncaCaiMobile"
-             x:Class="NuncaCaiMobile.MainPage">
+             x:Class="NuncaCaiMobile.MainPage"
+             Title="Nunca Cai">
 
-    <StackLayout>
+    <StackLayout Padding="15">
 
-        <Button x:Name="Btn_Players" Text="Jogadores" Clicked="Btn_Players_Clicked"/>
-        <Button x:Name="Btn_Sort" Text="Sortear Duplas" Clicked="Btn_Sort_Clicked"/>
-        <Button x:Name="Btn_MatchHistory" Text="Histórico de Partidas" Clicked="Btn_MatchHistory_Clicked"/>
-        <Button x:Name="Btn_Ranking" Text="Ranking" Clicked="Btn_Ranking_Clicked"/>
+
+        <Button x:Name="Btn_Players" Text="Jogadores" HorizontalOptions="FillAndExpand" Margin="5" Clicked="Btn_Players_Clicked"/>
+        <Button x:Name="Btn_Sort" Text="Sortear Duplas" HorizontalOptions="FillAndExpand" Margin="5" Clicked="Btn_Sort_Clicked"/>
+        <Button x:Name="Btn_MatchHistory"  Text="Histórico de Partidas" HorizontalOptions="FillAndExpand" Margin="5" Clicked="Btn_MatchHistory_Clicked"/>
+        <Button x:Name="Btn_Ranking" Text="Ranking" HorizontalOptions="FillAndExpand" Margin="5" Clicked="Btn_Ranking_Clicked"/>
+
 
     </StackLayout>
 

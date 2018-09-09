@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace NuncaCaiMobile.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class RankingView : ContentPage
+	public partial class RankingPage : ContentPage
 	{
-		public RankingView ()
+		public RankingPage ()
 		{
 			InitializeComponent ();
 		}
