@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastructure", "4 - Infrastructure", "{C6776C83-BBC9-4857-A8D9-B5AA9B86BD8E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile", "Mobile", "{F276AD1F-67E2-41EC-9DE0-8674CF8A3907}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile Xamarin", "Mobile Xamarin", "{F276AD1F-67E2-41EC-9DE0-8674CF8A3907}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuncaCaiMobile.Android", "NuncaCaiMobile\NuncaCaiMobile.Android\NuncaCaiMobile.Android.csproj", "{F615EB45-5891-4572-A9F2-C84A04E4194C}"
 EndProject

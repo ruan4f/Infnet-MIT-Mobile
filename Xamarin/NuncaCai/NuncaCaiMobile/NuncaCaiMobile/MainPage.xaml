@@ -5,10 +5,12 @@
              x:Class="NuncaCaiMobile.MainPage">
 
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+
+        <Button x:Name="Btn_Players" Text="Jogadores" Clicked="Btn_Players_Clicked"/>
+        <Button x:Name="Btn_Sort" Text="Sortear Duplas" Clicked="Btn_Sort_Clicked"/>
+        <Button x:Name="Btn_MatchHistory" Text="Histórico de Partidas" Clicked="Btn_MatchHistory_Clicked"/>
+        <Button x:Name="Btn_Ranking" Text="Ranking" Clicked="Btn_Ranking_Clicked"/>
+
     </StackLayout>
 
 </ContentPage>
