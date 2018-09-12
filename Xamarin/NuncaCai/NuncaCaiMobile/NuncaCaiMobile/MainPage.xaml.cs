@@ -23,7 +23,6 @@ namespace NuncaCaiMobile
         private void Btn_Sort_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new SortPage());
-
         }
 
         private void Btn_MatchHistory_Clicked(object sender, EventArgs e)
