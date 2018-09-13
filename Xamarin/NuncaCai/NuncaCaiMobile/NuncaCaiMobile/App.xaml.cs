@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NuncaCaiMobile.Interfaces;
+using NuncaCaiMobile.Services;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,9 +9,13 @@ namespace NuncaCaiMobile
 {
     public partial class App : Application
     {
+        public static IPlayerService PlayerService { get; set; }
+
         public App()
         {
             InitializeComponent();
+
+            PlayerService = new PlayerService();
 
             MainPage = new NavigationPage(new MainPage());
         }
