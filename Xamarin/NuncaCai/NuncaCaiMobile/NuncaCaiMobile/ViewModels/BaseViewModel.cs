@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Xamarin.Forms;
 
 namespace NuncaCaiMobile.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+
+        protected INavigation Navigation { get; set; }
+
+        public BaseViewModel(INavigation navigation)
+        {
+            Navigation = navigation;
+        }
 
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName]string propertyName = "",

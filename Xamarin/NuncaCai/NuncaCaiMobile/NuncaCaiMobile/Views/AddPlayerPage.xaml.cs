@@ -11,15 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace NuncaCaiMobile.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MatchHistoryPage : ContentPage
+	public partial class AddPlayerPage : ContentPage
 	{
-		public MatchHistoryPage ()
+		public AddPlayerPage ()
 		{
 			InitializeComponent ();
-            BindingContext = new MatchHistoryViewModel(Navigation);
+            BindingContext = new AddPlayerViewModel(Navigation);
 		}
-
-
-
 	}
 }

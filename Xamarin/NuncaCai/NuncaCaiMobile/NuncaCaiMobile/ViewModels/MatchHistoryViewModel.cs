@@ -3,11 +3,17 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using Xamarin.Forms;
 
 namespace NuncaCaiMobile.ViewModels
 {
     public class MatchHistoryViewModel : BaseViewModel
     {
+        public MatchHistoryViewModel(INavigation navigation) : base(navigation)
+        {
+
+        }
+
 
         private ObservableCollection<Match> _matches;
 

@@ -1,4 +1,5 @@
 ﻿using DomainModel.Entities;
+using NuncaCaiMobile.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,9 +12,9 @@ namespace NuncaCaiMobile.ViewModels
     public class PlayersViewModel : BaseViewModel
     {
 
-        public PlayersViewModel()
+        public PlayersViewModel(INavigation navigation) : base(navigation)
         {
-            AddCommand = new Command(AddPlayer);
+            ShowAddCommand = new Command(ShowAddPlayer);
 
             Players = new ObservableCollection<Player>(App.PlayerService.GetAll());
         }    
@@ -26,11 +27,11 @@ namespace NuncaCaiMobile.ViewModels
             set => SetProperty(ref _players, value);
         }
 
-        public ICommand AddCommand { get; set; }
+        public ICommand ShowAddCommand { get; set; }
 
-        private void AddPlayer()
+        private void ShowAddPlayer()
         {
-            
+            Navigation.PushAsync(new AddPlayerPage());
         }
 
     }

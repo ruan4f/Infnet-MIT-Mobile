@@ -6,5 +6,6 @@ namespace NuncaCaiMobile.ViewModels
 {
     public class SortViewModel
     {
+        
     }
 }

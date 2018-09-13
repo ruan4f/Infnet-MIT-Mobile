@@ -16,7 +16,18 @@ namespace NuncaCaiMobile.Views
 		public PlayersPage ()
 		{
 			InitializeComponent ();
-            BindingContext = new PlayersViewModel();
+            BindingContext = new PlayersViewModel(Navigation);
 		}
-	}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            var viewModel = new PlayersViewModel(Navigation);
+
+            ListView_Players.ItemsSource = viewModel.Players;
+
+            BindingContext = viewModel;
+        }
+    }
 }

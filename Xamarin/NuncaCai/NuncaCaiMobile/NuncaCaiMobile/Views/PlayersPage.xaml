@@ -4,18 +4,23 @@
              x:Class="NuncaCaiMobile.Views.PlayersPage"
              Title="Jogadores">
     <ContentPage.Content>
-        <StackLayout>
-            <ListView 
-                ItemsSource="{Binding Players}"
-                CachingStrategy="RecycleElement">
+        <StackLayout Margin="15">
+            <ListView x:Name="ListView_Players"
+                CachingStrategy="RecycleElement"
+                HasUnevenRows="True"
+                SeparatorColor="Black">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label x:Name="LabelName" Text="{Binding Name}" TextColor="Black" FontSize="16" LineBreakMode="NoWrap"/>
+                            </StackLayout>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Button x:Name="Btn_AddPlayer" Text="Novo Jogador" HorizontalOptions="FillAndExpand"/>
+            <Button x:Name="Btn_AddPlayer" Text="Novo Jogador" HorizontalOptions="FillAndExpand" Command="{Binding ShowAddCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

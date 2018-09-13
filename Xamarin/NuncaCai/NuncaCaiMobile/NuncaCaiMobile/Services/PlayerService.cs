@@ -16,6 +16,11 @@ namespace NuncaCaiMobile.Services
             _playerRepository = new PlayerRepository();
         }
 
+        public void Add(Player player)
+        {
+            _playerRepository.Add(player);
+        }
+
         public IEnumerable<Player> GetAll()
         {
             return _playerRepository.GetAll();
