@@ -40,17 +40,17 @@ namespace NuncaCaiMobile.Repositories
             _db.SaveChanges();
         }
 
-        public IEnumerable<Player> GetAll()
-        {
-            return _db.Players;
-        }
-
         public void Update(Player player)
         {
             var entry = _db.Entry(player);
             _db.Players.Attach(player);
             entry.State = EntityState.Modified;
             _db.SaveChanges();
+        }
+
+        public IEnumerable<Player> GetAll()
+        {
+            return _db.Players;
         }
     }
 }

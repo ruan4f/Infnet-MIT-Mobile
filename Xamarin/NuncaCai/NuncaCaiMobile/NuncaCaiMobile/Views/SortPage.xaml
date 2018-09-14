@@ -4,10 +4,23 @@
              x:Class="NuncaCaiMobile.Views.SortPage"
              Title="Sortear Duplas">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Margin="15">
+            <ListView x:Name="ListView_Matches"
+                ItemsSource="{Binding Matches}"
+                CachingStrategy="RecycleElement"
+                HasUnevenRows="True"
+                SeparatorColor="Black">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label x:Name="lblPlayer1" Text="{Binding Player1.Name}" TextColor="Black" FontSize="16" LineBreakMode="NoWrap"/>
+                                <Label x:Name="lblPlayer2" Text="{Binding Player2.Name}" TextColor="Black" FontSize="16" LineBreakMode="NoWrap"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

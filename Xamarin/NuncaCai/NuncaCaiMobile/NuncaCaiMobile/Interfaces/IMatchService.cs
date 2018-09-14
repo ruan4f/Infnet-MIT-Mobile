@@ -5,10 +5,10 @@ using System.Text;
 
 namespace NuncaCaiMobile.Interfaces
 {
-    public interface IMatchRepository
+    public interface IMatchService
     {
         void Add(Match match);
-        void Update(Match match);
+
         IEnumerable<Match> GetAll();
     }
 }
