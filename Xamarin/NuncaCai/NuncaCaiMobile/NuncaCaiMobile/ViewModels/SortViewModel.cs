@@ -24,7 +24,8 @@ namespace NuncaCaiMobile.ViewModels
             set => SetProperty(ref _matches, value);
         }
 
-        public ICommand ShowAddCommand { get; set; }
+        public ICommand Winner1Command { get; set; }
+        public ICommand Winner2Command { get; set; }
 
         private List<Match> GenerateMatches(IEnumerable<Player> players)
         {

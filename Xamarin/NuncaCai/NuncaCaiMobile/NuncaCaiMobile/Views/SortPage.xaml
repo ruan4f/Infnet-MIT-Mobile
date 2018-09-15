@@ -5,18 +5,29 @@
              Title="Sortear Duplas">
     <ContentPage.Content>
         <StackLayout Margin="15">
+
             <ListView x:Name="ListView_Matches"
                 ItemsSource="{Binding Matches}"
                 CachingStrategy="RecycleElement"
                 HasUnevenRows="True"
-                SeparatorColor="Black">
+                SeparatorColor="Black"
+                SelectionMode="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10">
-                                <Label x:Name="lblPlayer1" Text="{Binding Player1.Name}" TextColor="Black" FontSize="16" LineBreakMode="NoWrap"/>
-                                <Label x:Name="lblPlayer2" Text="{Binding Player2.Name}" TextColor="Black" FontSize="16" LineBreakMode="NoWrap"/>
-                            </StackLayout>
+                            <ViewCell.View>
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label x:Name="lblPlayer1" Text="{Binding Player1.Name}" TextColor="Black" FontSize="16" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
+                                        <Label x:Name="lblPlayer2" Text="{Binding Player2.Name}" TextColor="Black" FontSize="16" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Button x:Name="btn_winner_player1" Text="Vencedor" HorizontalOptions="FillAndExpand" />
+                                        <Button x:Name="btn_winner_player2" Text="Vencedor"  HorizontalOptions="FillAndExpand" />
+                                    </StackLayout>
+                                </StackLayout>                         
+                                
+                            </ViewCell.View>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

@@ -7,10 +7,21 @@
         <StackLayout>
             <ListView 
                 ItemsSource="{Binding Matches}"
-                CachingStrategy="RecycleElement">
+                CachingStrategy="RecycleElement"
+                HasUnevenRows="True"
+                SeparatorColor="Black">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    
+                                </Grid.RowDefinitions>
+                            </Grid>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

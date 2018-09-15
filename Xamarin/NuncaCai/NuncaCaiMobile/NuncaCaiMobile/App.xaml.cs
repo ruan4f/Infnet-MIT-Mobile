@@ -15,7 +15,7 @@ namespace NuncaCaiMobile
         {
             InitializeComponent();
 
-            PlayerService = new PlayerService();
+            PlayerService = new PlayerService();        
 
             MainPage = new NavigationPage(new MainPage());
         }

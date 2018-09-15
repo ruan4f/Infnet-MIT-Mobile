@@ -14,7 +14,6 @@ namespace NuncaCaiMobile.ViewModels
 
         }
 
-
         private ObservableCollection<Match> _matches;
 
         public ObservableCollection<Match> Matches
@@ -22,6 +21,7 @@ namespace NuncaCaiMobile.ViewModels
             get { return _matches; }
             set => SetProperty(ref _matches, value);
         }
+
 
 
 
