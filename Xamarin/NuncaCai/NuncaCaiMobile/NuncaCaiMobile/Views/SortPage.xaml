@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NuncaCaiMobile.Views.SortPage"
+             x:Name="SortView"
              Title="Sortear Duplas">
     <ContentPage.Content>
         <StackLayout Margin="15">
@@ -22,11 +23,10 @@
                                         <Label x:Name="lblPlayer2" Text="{Binding Player2.Name}" TextColor="Black" FontSize="16" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
-                                        <Button x:Name="btn_winner_player1" Text="Vencedor" HorizontalOptions="FillAndExpand" />
-                                        <Button x:Name="btn_winner_player2" Text="Vencedor"  HorizontalOptions="FillAndExpand" />
+                                        <Button x:Name="btn_winner_player1" Text="Vencedor" HorizontalOptions="FillAndExpand" Command="{Binding Path=BindingContext.Winner1Command, Source={x:Reference SortView}}" CommandParameter="{Binding .}"/>
+                                        <Button x:Name="btn_winner_player2" Text="Vencedor" HorizontalOptions="FillAndExpand" Command="{Binding Path=BindingContext.Winner2Command, Source={x:Reference SortView}}" CommandParameter="{Binding .}"/>
                                     </StackLayout>
-                                </StackLayout>                         
-                                
+                                </StackLayout>
                             </ViewCell.View>
                         </ViewCell>
                     </DataTemplate>

@@ -14,6 +14,9 @@ namespace NuncaCaiMobile.ViewModels
         public SortViewModel(INavigation navigation) : base(navigation)
         {
             Matches = new ObservableCollection<Match>(GenerateMatches(App.PlayerService.GetAll()));
+
+            Winner1Command = new Command<Match>(q => Winner1(q));
+            Winner2Command = new Command<Match>(q => Winner2(q));
         }
 
         private ObservableCollection<Match> _matches;
@@ -26,6 +29,20 @@ namespace NuncaCaiMobile.ViewModels
 
         public ICommand Winner1Command { get; set; }
         public ICommand Winner2Command { get; set; }
+
+        private void Winner1(Match match)
+        {
+            var winner = match.Player1;
+
+            match.Winner = winner;
+        }
+
+        private void Winner2(Match match)
+        {
+            var winner = match.Player2;
+
+            match.Winner = winner;
+        }
 
         private List<Match> GenerateMatches(IEnumerable<Player> players)
         {
