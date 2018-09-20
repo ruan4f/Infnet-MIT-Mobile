@@ -13,14 +13,15 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    
-                                </Grid.RowDefinitions>
-                            </Grid>
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label x:Name="lblPlayer1" Text="{Binding Player1.Name}" TextColor="Black" FontSize="16" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
+                                    <Label x:Name="lblPlayer2" Text="{Binding Player2.Name}" TextColor="Black" FontSize="16" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
+                                </StackLayout>
+                                <StackLayout>
+                                    <Label x:Name="lblWinner" Text="{Binding Winner.Name}" TextColor="Black" FontSize="16" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
+                                </StackLayout>
+                            </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

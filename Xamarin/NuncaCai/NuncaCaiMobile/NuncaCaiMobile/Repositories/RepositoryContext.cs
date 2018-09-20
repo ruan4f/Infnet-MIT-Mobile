@@ -1,4 +1,4 @@
-﻿using DomainModel.Entities;
+﻿using NuncaCaiMobile.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace NuncaCaiMobile.Repositories

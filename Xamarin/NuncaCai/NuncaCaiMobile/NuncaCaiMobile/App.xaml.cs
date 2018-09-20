@@ -10,12 +10,14 @@ namespace NuncaCaiMobile
     public partial class App : Application
     {
         public static IPlayerService PlayerService { get; set; }
+        public static IMatchService MatchService { get; set; }
 
         public App()
         {
             InitializeComponent();
 
-            PlayerService = new PlayerService();        
+            PlayerService = new PlayerService();
+            MatchService = new MatchService();
 
             MainPage = new NavigationPage(new MainPage());
         }

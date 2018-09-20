@@ -1,4 +1,4 @@
-﻿using DomainModel.Entities;
+﻿using NuncaCaiMobile.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,7 +11,7 @@ namespace NuncaCaiMobile.ViewModels
     {
         public MatchHistoryViewModel(INavigation navigation) : base(navigation)
         {
-
+            Matches = new ObservableCollection<Match>(App.MatchService.GetAll());
         }
 
         private ObservableCollection<Match> _matches;

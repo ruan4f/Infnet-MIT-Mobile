@@ -1,4 +1,4 @@
-﻿using DomainModel.Entities;
+﻿using NuncaCaiMobile.Models;
 using NuncaCaiMobile.Interfaces;
 using NuncaCaiMobile.Repositories;
 using System;
@@ -19,6 +19,11 @@ namespace NuncaCaiMobile.Services
         public void Add(Match match)
         {
             _matchRepository.Add(match);
+        }
+
+        public void Update(Match match)
+        {
+            _matchRepository.Update(match);
         }
 
         public IEnumerable<Match> GetAll()

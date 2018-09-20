@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DomainModel.Entities
+namespace NuncaCaiMobile.Models
 {
     public class Match
     {
@@ -11,30 +11,23 @@ namespace DomainModel.Entities
 
         }
 
-        public Match(Guid id, Player player1, Player player2, Player winner)
+        public Match(Guid player1Id, Guid player2Id)
         {
-            Id = id;
-            Player1Id = player1.Id;
-            Player1 = player1;
-            Player2Id = player2.Id;
-            Player2 = player2;
-            WinnerId = winner.Id;
-            Winner = winner;
+            Id = Guid.NewGuid();
+            Player1Id = player1Id;
+            Player2Id = player2Id;
             MatchDate = new DateTime();
         }
 
         public Guid Id { get; set; }
 
         public Guid Player1Id { get; set; }
-
         public virtual Player Player1 { get; set; }
 
         public Guid Player2Id { get; set; }
-
         public virtual Player Player2 { get; set; }
 
         public Guid WinnerId { get; set; }
-
         public virtual Player Winner { get; set; }
 
         public DateTime MatchDate { get; set; }

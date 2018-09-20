@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using DomainModel.Entities;
 using Infra.Data.Context;
 using NuncaCai.Application.Interfaces;
+using NuncaCai.Api.REST.Model;
 
 namespace NuncaCai.Api.REST.Controllers
 {
@@ -48,79 +49,18 @@ namespace NuncaCai.Api.REST.Controllers
             return Ok(match);
         }
 
-        // PUT: api/Matches/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutMatch([FromRoute] Guid id, [FromBody] Match match)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != match.Id)
-            {
-                return BadRequest();
-            }
-
-            await _service.UpdateSync(match);
-
-            //try
-            //{
-            //    await _context.SaveChangesAsync();
-            //}
-            //catch (DbUpdateConcurrencyException)
-            //{
-            //    if (!MatchExists(id))
-            //    {
-            //        return NotFound();
-            //    }
-            //    else
-            //    {
-            //        throw;
-            //    }
-            //}
-
-            return NoContent();
-        }
-
         // POST: api/Matches
         [HttpPost]
-        public async Task<IActionResult> PostMatch([FromBody] Match match)
+        public async Task<IActionResult> PostMatch([FromBody] MatchModel match)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            await _service.AddSync(match);
+            var newMatch = await _service.AddSync(match.Id, match.Player1Id, match.Player2Id, match.WinnerId);
 
-            return CreatedAtAction("GetMatch", new { id = match.Id }, match);
-        }
-
-        // DELETE: api/Matches/5
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeleteMatch([FromRoute] Guid id)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    var match = await _context.Matches.FindAsync(id);
-        //    if (match == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    _context.Matches.Remove(match);
-        //    await _context.SaveChangesAsync();
-
-        //    return Ok(match);
-        //}
-
-        //private bool MatchExists(Guid id)
-        //{
-        //    return _context.Matches.Any(e => e.Id == id);
-        //}
+            return CreatedAtAction("GetMatch", new { id = newMatch.Id }, newMatch);
+        }        
     }
 }

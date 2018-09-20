@@ -1,4 +1,4 @@
-﻿using DomainModel.Entities;
+﻿using NuncaCaiMobile.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -32,16 +32,25 @@ namespace NuncaCaiMobile.ViewModels
 
         private void Winner1(Match match)
         {
-            var winner = match.Player1;
+            var index = Matches.IndexOf(match);
+            var winnerId = match.Player1Id;
 
-            match.Winner = winner;
+            match.WinnerId = winnerId;
+
+            Matches[index] = match;
+
+            App.MatchService.Add(match);
         }
 
         private void Winner2(Match match)
         {
-            var winner = match.Player2;
+            var index = Matches.IndexOf(match);
+            var winnerId = match.Player2Id;
 
-            match.Winner = winner;
+            match.WinnerId = winnerId;
+            Matches[index] = match;
+
+            App.MatchService.Add(match);
         }
 
         private List<Match> GenerateMatches(IEnumerable<Player> players)
@@ -59,7 +68,7 @@ namespace NuncaCaiMobile.ViewModels
                 var second = listRandomized[count];
                 count++;
 
-                newMatches.Add(new Match(first, second));
+                newMatches.Add(new Match(first.Id, second.Id));
             }
 
             return newMatches;

@@ -95,32 +95,6 @@ namespace NuncaCai.Api.REST.Controllers
             await _service.AddSync(player);
 
             return CreatedAtAction("GetPlayer", new { id = player.Id }, player);
-        }
-
-        // DELETE: api/Players/5
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeletePlayer([FromRoute] Guid id)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
-
-        //    var player = await _context.Players.FindAsync(id);
-        //    if (player == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    _context.Players.Remove(player);
-        //    await _context.SaveChangesAsync();
-
-        //    return Ok(player);
-        //}
-
-        //private bool PlayerExists(Guid id)
-        //{
-        //    return _context.Players.Any(e => e.Id == id);
-        //}
+        }        
     }
 }

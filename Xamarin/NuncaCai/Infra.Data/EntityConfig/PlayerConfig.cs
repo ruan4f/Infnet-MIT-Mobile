@@ -14,7 +14,8 @@ namespace Infra.Data.EntityConfig
                 .IsRequired()
                 .HasMaxLength(50);
 
-            builder.Property(e => e.Point);
+            builder.Property(e => e.Point)
+                .IsRequired();
 
             builder.Property(e => e.RegistrationDate)
                 .IsRequired();

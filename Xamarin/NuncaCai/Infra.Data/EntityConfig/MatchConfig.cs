@@ -11,11 +11,23 @@ namespace Infra.Data.EntityConfig
         {
             builder.HasKey(e => e.Id);
 
-            builder.HasOne(d => d.Player1);
+            builder
+                .HasOne(d => d.Player1)
+                .WithMany()
+                .HasForeignKey(e => e.Player1Id)
+                .IsRequired();
 
-            builder.HasOne(d => d.Player2);
+            builder
+                .HasOne(d => d.Player2)
+                .WithMany()
+                .HasForeignKey(e => e.Player2Id)
+                .IsRequired(); 
 
-            builder.HasOne(d => d.Winner);
+            builder
+                .HasOne(d => d.Winner)
+                .WithMany()
+                .HasForeignKey(e => e.WinnerId)                
+                .IsRequired();
         }
 
     }
