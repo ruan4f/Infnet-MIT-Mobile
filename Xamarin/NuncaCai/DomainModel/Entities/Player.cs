@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace DomainModel.Entities
 {
@@ -6,7 +8,7 @@ namespace DomainModel.Entities
     {
         public Player()
         {
-                
+
         }
 
         public Player(string name)
@@ -14,7 +16,7 @@ namespace DomainModel.Entities
             Id = Guid.NewGuid();
             Name = name;
             Point = 0;
-            RegistrationDate = new DateTime();
+            RegistrationDate = new DateTime();            
         }
 
         public Guid Id { get; set; }
@@ -24,5 +26,6 @@ namespace DomainModel.Entities
         public int Point { get; set; }
 
         public DateTime RegistrationDate { get; set; }
+
     }
 }

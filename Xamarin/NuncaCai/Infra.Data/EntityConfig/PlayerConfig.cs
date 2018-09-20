@@ -19,6 +19,7 @@ namespace Infra.Data.EntityConfig
 
             builder.Property(e => e.RegistrationDate)
                 .IsRequired();
+            
         }
     }
 }

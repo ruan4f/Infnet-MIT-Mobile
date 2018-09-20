@@ -9,7 +9,8 @@ namespace Infra.Data.EntityConfig
 
         public void Configure(EntityTypeBuilder<Match> builder)
         {
-            builder.HasKey(e => e.Id);
+            builder
+                .HasKey(e => e.Id);
 
             builder
                 .HasOne(d => d.Player1)
