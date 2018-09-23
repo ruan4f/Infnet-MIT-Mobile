@@ -16,9 +16,9 @@ namespace DomainService.Services
             _repository = repository;
         }
 
-        public async Task AddSync(Match match)
+        public async Task AddSync(Guid id, Guid player1Id, Guid player2Id, Guid winnerId)
         {
-            await _repository.AddSync(match);
+            await _repository.AddSync(id, player1Id, player2Id, winnerId);
         }
 
         public IEnumerable<Match> GetAll()

@@ -58,9 +58,9 @@ namespace NuncaCai.Api.REST.Controllers
                 return BadRequest(ModelState);
             }
 
-            var newMatch = await _service.AddSync(match.Id, match.Player1Id, match.Player2Id, match.WinnerId);
-
-            return CreatedAtAction("GetMatch", new { id = newMatch.Id }, newMatch);
+            await _service.AddSync(match.Id, match.Player1Id, match.Player2Id, match.WinnerId);
+            
+            return Ok();
         }        
     }
 }

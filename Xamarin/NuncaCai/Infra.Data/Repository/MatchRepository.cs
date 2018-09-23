@@ -18,9 +18,16 @@ namespace Infra.Data.Repository
             _context = context;
         }
 
-        public async Task AddSync(Match match)
+        public async Task AddSync(Guid id, Guid player1Id, Guid player2Id, Guid winnerId)
         {
-            await _context.AddAsync(match);
+            var player1 = await _context.Players.FindAsync(player1Id);
+            var player2 = await _context.Players.FindAsync(player2Id);
+            var winner = await _context.Players.FindAsync(winnerId);
+
+            var match = new Match(id, player1, player2, winner);
+
+            await _context.Matches.AddAsync(match);
+
             await _context.SaveChangesAsync();
         }
 

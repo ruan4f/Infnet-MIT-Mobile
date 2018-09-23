@@ -8,7 +8,7 @@ namespace Infra.Data.EntityConfig
     {
         public void Configure(EntityTypeBuilder<Player> builder)
         {
-            builder.HasKey(e => e.Id);
+            builder.HasKey(e => e.PlayerId);
 
             builder.Property(e => e.Name)
                 .IsRequired()
@@ -19,7 +19,15 @@ namespace Infra.Data.EntityConfig
 
             builder.Property(e => e.RegistrationDate)
                 .IsRequired();
-            
+
+            builder.HasMany(f => f.FirstMatches)
+                .WithOne(f => f.Player1);
+
+            builder.HasMany(f => f.SecondMatches)
+                .WithOne(f => f.Player2);
+
+            builder.HasMany(f => f.WinnerMatches)
+                .WithOne(f => f.Winner);
         }
     }
 }

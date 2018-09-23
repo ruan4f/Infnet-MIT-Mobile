@@ -9,20 +9,24 @@ namespace Infra.Data.Context
         public virtual DbSet<Player> Players { get; set; }
         public virtual DbSet<Match> Matches { get; set; }
 
+        public EntityContext()
+        {
+            Database.EnsureCreated();
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(@"Data Source=.\SQLEXPRESS;Initial Catalog=NuncaCai;Integrated Security=True;");
-
-                //optionsBuilder.UseSqlServer(@"Server=.\SQLExpress;Database=NuncaCai;Trusted_Connection=True;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new PlayerConfig());
+            //modelBuilder.ApplyConfiguration(new PlayerConfig());
             modelBuilder.ApplyConfiguration(new MatchConfig());
+           // modelBuilder.ApplyConfiguration(new MatchPlayedConfig());
         }
 
     }

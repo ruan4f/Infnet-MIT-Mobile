@@ -8,24 +8,37 @@ namespace DomainModel.Entities
     {
         public Player()
         {
-
+            //Matches = new List<MatchPlayed>();
+            FirstMatches = new List<Match>();
+            SecondMatches = new List<Match>();
+            WinnerMatches = new List<Match>();
         }
 
         public Player(string name)
         {
-            Id = Guid.NewGuid();
+            PlayerId = Guid.NewGuid();
             Name = name;
             Point = 0;
-            RegistrationDate = new DateTime();            
+            RegistrationDate = new DateTime();
+            //Matches = new List<MatchPlayed>();
+            FirstMatches = new List<Match>();
+            SecondMatches = new List<Match>();
+            WinnerMatches = new List<Match>();
         }
 
-        public Guid Id { get; set; }
+        public Guid PlayerId { get; set; }
 
         public string Name { get; set; }
 
         public int Point { get; set; }
 
         public DateTime RegistrationDate { get; set; }
+
+        //public ICollection<MatchPlayed> Matches { get; set; }
+
+        public virtual ICollection<Match> FirstMatches { get; set; }
+        public virtual ICollection<Match> SecondMatches { get; set; }
+        public virtual ICollection<Match> WinnerMatches { get; set; }
 
     }
 }

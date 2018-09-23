@@ -57,7 +57,7 @@ namespace NuncaCai.Api.REST.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != player.Id)
+            if (id != player.PlayerId)
             {
                 return BadRequest();
             }
@@ -94,7 +94,7 @@ namespace NuncaCai.Api.REST.Controllers
 
             await _service.AddSync(player);
 
-            return CreatedAtAction("GetPlayer", new { id = player.Id }, player);
+            return CreatedAtAction("GetPlayer", new { id = player.PlayerId }, player);
         }        
     }
 }

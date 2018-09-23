@@ -27,7 +27,7 @@ namespace NuncaCaiMobile.ViewModels
 
         private void AddPlayer()
         {
-            App.PlayerService.Add(new Player(Name));
+            //App.PlayerService.Add(new Player(Name));
             Navigation.PopAsync();
         }
     }

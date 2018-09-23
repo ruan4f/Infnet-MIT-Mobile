@@ -9,26 +9,26 @@ namespace Infra.Data.EntityConfig
 
         public void Configure(EntityTypeBuilder<Match> builder)
         {
-            builder
-                .HasKey(e => e.Id);
 
             builder
-                .HasOne(d => d.Player1)
-                .WithMany()
-                .HasForeignKey(e => e.Player1Id)
-                .IsRequired();
+                .HasOne(m => m.Player1)
+                .WithMany(t => t.FirstMatches)
+                .HasForeignKey(m => m.Player1Id)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder
-                .HasOne(d => d.Player2)
-                .WithMany()
-                .HasForeignKey(e => e.Player2Id)
-                .IsRequired(); 
+                .HasOne(m => m.Player2)
+                .WithMany(t => t.SecondMatches)
+                .HasForeignKey(m => m.Player2Id)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder
-                .HasOne(d => d.Winner)
-                .WithMany()
-                .HasForeignKey(e => e.WinnerId)                
-                .IsRequired();
+                .HasOne(m => m.Winner)
+                .WithMany(t => t.WinnerMatches)
+                .HasForeignKey(m => m.WinnerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
         }
 
     }
