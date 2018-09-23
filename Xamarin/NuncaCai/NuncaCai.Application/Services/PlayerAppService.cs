@@ -17,6 +17,11 @@ namespace NuncaCai.Application.Services
             _playerService = playerService;
         }
 
+        public async Task AddPointSync(Guid id)
+        {
+            await _playerService.AddPointSync(id);
+        }
+
         public async Task AddSync(Player player)
         {
             await _playerService.AddSync(player);

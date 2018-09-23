@@ -16,6 +16,14 @@ namespace DomainService.Services
             _repository = repository;
         }
 
+        public async Task AddPointSync(Guid id)
+        {
+            var player = await _repository.GetByIdSync(id);
+
+            player.Point += 1;
+
+            await _repository.UpdateSync(player);            
+        }
 
         public async Task AddSync(Player player)
         {

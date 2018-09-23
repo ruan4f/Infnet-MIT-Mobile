@@ -16,7 +16,7 @@ namespace NuncaCaiMobile.Models
             Id = Guid.NewGuid();
             Name = name;
             Point = 0;
-            RegistrationDate = new DateTime();
+            RegistrationDate = DateTime.Now;
         }
 
         public Guid Id { get; set; }

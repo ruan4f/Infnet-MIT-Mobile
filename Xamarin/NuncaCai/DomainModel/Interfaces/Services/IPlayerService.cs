@@ -13,6 +13,8 @@ namespace DomainModel.Interfaces.Services
 
         Task UpdateSync(Player player);
 
+        Task AddPointSync(Guid id);
+
         IEnumerable<Player> GetAll();
 
         Task<Player> GetByIdSync(Guid id);

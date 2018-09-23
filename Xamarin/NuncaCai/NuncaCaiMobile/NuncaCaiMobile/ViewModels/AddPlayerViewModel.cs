@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -9,9 +10,9 @@ namespace NuncaCaiMobile.ViewModels
 {
     public class AddPlayerViewModel : BaseViewModel
     {
-        public AddPlayerViewModel(INavigation navigation):base(navigation)
+        public AddPlayerViewModel(INavigation navigation) : base(navigation)
         {
-            AddCommand = new Command(AddPlayer);
+            AddCommand = new Command(async () => await AddPlayer());
         }
 
         private string _name;
@@ -25,10 +26,10 @@ namespace NuncaCaiMobile.ViewModels
 
         public ICommand AddCommand { get; set; }
 
-        private void AddPlayer()
+        private async Task AddPlayer()
         {
-            //App.PlayerService.Add(new Player(Name));
-            Navigation.PopAsync();
+            await App.PlayerService.AddSync(new Player(Name));
+            await Navigation.PopAsync();
         }
     }
 }

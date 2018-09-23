@@ -26,17 +26,16 @@ namespace NuncaCaiMobile.Services
 
             try
             {
-
-
                 var content = new StringContent(JsonConvert.SerializeObject(player), Encoding.UTF8, "application/json");
-                string caminho = $"{urlApi}/players";
-
-                var result = await client.PostAsync(caminho, content);
+                var result = await client.PostAsync(url, content);
 
                 if (result.IsSuccessStatusCode)
                 {
                     var jsonString = result.Content.ReadAsStringAsync();
                     jsonString.Wait();
+
+                    _playerRepository.Add(player);
+
                     //resultado = JsonConvert.DeserializeObject<DadosRetornoSincronizacao>(jsonString.Result);
                 }
                 else

@@ -83,6 +83,35 @@ namespace NuncaCai.Api.REST.Controllers
             return NoContent();
         }
 
+        [HttpPut("{id}/add-point")]
+        public async Task<IActionResult> AddPointPlayer([FromRoute] Guid id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            await _service.AddPointSync(id);
+
+            //try
+            //{
+            //    await _context.SaveChangesAsync();
+            //}
+            //catch (DbUpdateConcurrencyException)
+            //{
+            //    if (!PlayerExists(id))
+            //    {
+            //        return NotFound();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
+
+            return NoContent();
+        }
+
         //POST: api/Players
         [HttpPost]
         public async Task<IActionResult> PostPlayer([FromBody] Player player)
