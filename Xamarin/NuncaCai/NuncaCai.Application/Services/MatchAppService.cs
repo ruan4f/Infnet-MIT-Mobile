@@ -18,17 +18,9 @@ namespace NuncaCai.Application.Services
             _playerService = playerService;
         }
 
-        public async Task AddSync(Guid id, Guid player1Id, Guid player2Id, Guid winnerId)
+        public async Task AddSync(Guid id, Guid player1Id, Guid player2Id, Guid winnerId, DateTime date)
         {
-            //var player1 = await _playerService.GetByIdSync(player1Id);
-            //var player2 = await _playerService.GetByIdSync(player2Id);
-            //var winner = winnerId == player1Id ? player1 : player2;
-
-            //var match = new Match(id, player1, player2, winner);
-
-            //await _matchService.AddSync(match);
-
-            await _matchService.AddSync(id, player1Id, player2Id, winnerId);
+            await _matchService.AddSync(id, player1Id, player2Id, winnerId, date);
         }
 
         public IEnumerable<Match> GetAll()

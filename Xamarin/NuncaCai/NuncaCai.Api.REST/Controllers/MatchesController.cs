@@ -58,7 +58,7 @@ namespace NuncaCai.Api.REST.Controllers
                 return BadRequest(ModelState);
             }
 
-            await _service.AddSync(match.Id, match.Player1Id, match.Player2Id, match.WinnerId);
+            await _service.AddSync(match.Id, match.Player1Id, match.Player2Id, match.WinnerId, match.Date);
             
             return Ok();
         }        

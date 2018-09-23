@@ -12,6 +12,6 @@ namespace NuncaCai.Api.REST.Model
         public Guid Player1Id { get; set; }
         public Guid Player2Id { get; set; }
         public Guid WinnerId { get; set; }
-
+        public DateTime Date { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace NuncaCai.Application.Interfaces
 {
     public interface IMatchAppService
     {
-        Task AddSync(Guid id, Guid player1Id, Guid player2Id, Guid winnerId);
+        Task AddSync(Guid id, Guid player1Id, Guid player2Id, Guid winnerId, DateTime date);
         
         IEnumerable<Match> GetAll();
         Task<Match> GetByIdSync(Guid id);

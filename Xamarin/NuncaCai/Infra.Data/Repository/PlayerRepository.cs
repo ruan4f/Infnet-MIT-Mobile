@@ -19,7 +19,7 @@ namespace Infra.Data.Repository
 
         public async Task AddSync(Player player)
         {
-            await _context.AddAsync(player);
+            await _context.Players.AddAsync(player);
             await _context.SaveChangesAsync();
         }
 

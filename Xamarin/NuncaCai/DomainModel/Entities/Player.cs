@@ -8,7 +8,6 @@ namespace DomainModel.Entities
     {
         public Player()
         {
-            //Matches = new List<MatchPlayed>();
             FirstMatches = new List<Match>();
             SecondMatches = new List<Match>();
             WinnerMatches = new List<Match>();
@@ -20,7 +19,7 @@ namespace DomainModel.Entities
             Name = name;
             Point = 0;
             RegistrationDate = new DateTime();
-            //Matches = new List<MatchPlayed>();
+
             FirstMatches = new List<Match>();
             SecondMatches = new List<Match>();
             WinnerMatches = new List<Match>();
@@ -33,9 +32,7 @@ namespace DomainModel.Entities
         public int Point { get; set; }
 
         public DateTime RegistrationDate { get; set; }
-
-        //public ICollection<MatchPlayed> Matches { get; set; }
-
+        
         public virtual ICollection<Match> FirstMatches { get; set; }
         public virtual ICollection<Match> SecondMatches { get; set; }
         public virtual ICollection<Match> WinnerMatches { get; set; }
