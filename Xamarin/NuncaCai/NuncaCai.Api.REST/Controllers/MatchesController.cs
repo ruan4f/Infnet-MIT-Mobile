@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using DomainModel.Entities;
-using Infra.Data.Context;
 using NuncaCai.Application.Interfaces;
 using NuncaCai.Api.REST.Model;
 
@@ -58,7 +54,7 @@ namespace NuncaCai.Api.REST.Controllers
                 return BadRequest(ModelState);
             }
 
-            await _service.AddSync(match.Id, match.Player1Id, match.Player2Id, match.WinnerId, match.Date);
+            await _service.AddSync(match.Id, match.Player1Id, match.Player2Id, match.WinnerId);
             
             return Ok();
         }        

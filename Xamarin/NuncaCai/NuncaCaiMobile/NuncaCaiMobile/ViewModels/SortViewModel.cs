@@ -1,8 +1,9 @@
-﻿using NuncaCaiMobile.Models;
+﻿using DomainModel.Entities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -15,8 +16,8 @@ namespace NuncaCaiMobile.ViewModels
         {
             Matches = new ObservableCollection<Match>(GenerateMatches(App.PlayerService.GetAll()));
 
-            Winner1Command = new Command<Match>(q => Winner1(q));
-            Winner2Command = new Command<Match>(q => Winner2(q));
+            Winner1Command = new Command<Match>(async q => await Winner1(q));
+            Winner2Command = new Command<Match>(async q => await Winner2(q));
         }
 
         private ObservableCollection<Match> _matches;
@@ -30,7 +31,7 @@ namespace NuncaCaiMobile.ViewModels
         public ICommand Winner1Command { get; set; }
         public ICommand Winner2Command { get; set; }
 
-        private void Winner1(Match match)
+        private async Task Winner1(Match match)
         {
             var index = Matches.IndexOf(match);
             var winnerId = match.Player1Id;
@@ -39,10 +40,10 @@ namespace NuncaCaiMobile.ViewModels
 
             Matches[index] = match;
 
-            App.MatchService.Add(match);
+            await App.MatchService.AddSync(match);
         }
 
-        private void Winner2(Match match)
+        private async Task Winner2(Match match)
         {
             var index = Matches.IndexOf(match);
             var winnerId = match.Player2Id;
@@ -50,7 +51,7 @@ namespace NuncaCaiMobile.ViewModels
             match.WinnerId = winnerId;
             Matches[index] = match;
 
-            App.MatchService.Add(match);
+            await App.MatchService.AddSync(match);
         }
 
         private List<Match> GenerateMatches(IEnumerable<Player> players)
@@ -68,7 +69,7 @@ namespace NuncaCaiMobile.ViewModels
                 var second = listRandomized[count];
                 count++;
 
-                newMatches.Add(new Match(first.Id, second.Id));
+                newMatches.Add(new Match(Guid.NewGuid(), first, second));
             }
 
             return newMatches;

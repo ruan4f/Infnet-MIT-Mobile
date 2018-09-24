@@ -1,4 +1,5 @@
-﻿using NuncaCaiMobile.Models;
+﻿using DomainModel.Entities;
+
 using NuncaCaiMobile.Views;
 using System;
 using System.Collections.Generic;

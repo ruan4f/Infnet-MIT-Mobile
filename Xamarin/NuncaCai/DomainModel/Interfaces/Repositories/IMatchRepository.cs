@@ -7,7 +7,7 @@ namespace DomainModel.Interfaces.Repositories
 {
     public interface IMatchRepository
     {
-        Task AddSync(Guid id, Guid player1Id, Guid player2Id, Guid winnerId, DateTime date);
+        Task AddSync(Guid id, Guid player1Id, Guid player2Id, Guid winnerId);
         Task UpdateSync(Match match);
         IEnumerable<Match> GetAll();
         Task<Match> GetByIdSync(Guid id);

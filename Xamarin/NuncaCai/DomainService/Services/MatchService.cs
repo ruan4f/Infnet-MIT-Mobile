@@ -16,9 +16,14 @@ namespace DomainService.Services
             _repository = repository;
         }
 
-        public async Task AddSync(Guid id, Guid player1Id, Guid player2Id, Guid winnerId, DateTime date)
+        public async Task AddSync(Guid id, Guid player1Id, Guid player2Id, Guid winnerId)
         {
-            await _repository.AddSync(id, player1Id, player2Id, winnerId, date);
+            await _repository.AddSync(id, player1Id, player2Id, winnerId);
+        }
+
+        public async Task AddSync(Match match)
+        {
+            await _repository.AddSync(match.MatchId, match.Player1Id, match.Player2Id, match.WinnerId);
         }
 
         public IEnumerable<Match> GetAll()

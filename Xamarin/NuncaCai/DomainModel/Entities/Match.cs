@@ -11,7 +11,7 @@ namespace DomainModel.Entities
 
         }
 
-        public Match(Guid id, Player player1, Player player2, Player winner, DateTime date)
+        public Match(Guid id, Player player1, Player player2, Player winner)
         {
             MatchId = id;
             Player1Id = player1.PlayerId;
@@ -20,7 +20,17 @@ namespace DomainModel.Entities
             Player2 = player2;
             WinnerId = winner.PlayerId;
             Winner = winner;
-            MatchDate = date;
+            MatchDate = DateTime.Now;
+        }
+
+        public Match(Guid id, Player player1, Player player2)
+        {
+            MatchId = id;
+            Player1Id = player1.PlayerId;
+            Player1 = player1;
+            Player2Id = player2.PlayerId;
+            Player2 = player2;            
+            MatchDate = DateTime.Now;
         }
 
         public Guid MatchId { get; set; }
