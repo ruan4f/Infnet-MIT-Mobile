@@ -1,8 +1,8 @@
 ﻿using DomainModel.Interfaces.Repositories;
 using DomainModel.Interfaces.Services;
 using DomainService.Services;
-using Infra.Data.Context;
-using Infra.Data.Repository;
+using Infra.Data.SQLServer.Context;
+using Infra.Data.SQLServer.Repository;
 using NuncaCai.Application.Interfaces;
 using NuncaCai.Application.Services;
 using SimpleInjector;
@@ -24,7 +24,7 @@ namespace Infra.CrossCutting.IoC
             // Infra Dados
             container.Register<IPlayerRepository, PlayerRepository>();
             container.Register<IMatchRepository, MatchRepository>();
-            container.Register<EntityContext>();
+            container.Register<EntitySQLContext>();
 
         }
     }

@@ -1,16 +1,20 @@
 ﻿using DomainModel.Entities;
-using Infra.Data.EntityConfig;
+using Infra.Data.SQLServer.EntityConfig;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infra.Data.Context
+namespace Infra.Data.SQLServer.Context
 {
-    public class EntityContext : DbContext
+    public class EntitySQLContext : DbContext
     {
         public virtual DbSet<Player> Players { get; set; }
         public virtual DbSet<Match> Matches { get; set; }
 
-        public EntityContext()
+        public string DbPath { get; set; }
+
+        public EntitySQLContext()
         {
+            DbPath = @"Data Source=.\SQLEXPRESS;Initial Catalog=NuncaCai;Integrated Security=True;";
+
             Database.EnsureCreated();
         }
 
@@ -18,15 +22,13 @@ namespace Infra.Data.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Data Source=.\SQLEXPRESS;Initial Catalog=NuncaCai;Integrated Security=True;");
+                optionsBuilder.UseSqlServer(DbPath);
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.ApplyConfiguration(new PlayerConfig());
             modelBuilder.ApplyConfiguration(new MatchConfig());
-           // modelBuilder.ApplyConfiguration(new MatchPlayedConfig());
         }
 
     }

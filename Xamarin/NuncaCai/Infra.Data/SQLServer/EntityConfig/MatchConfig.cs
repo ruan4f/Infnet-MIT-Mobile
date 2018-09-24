@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infra.Data.EntityConfig
+namespace Infra.Data.SQLServer.EntityConfig
 {
     public class MatchConfig : IEntityTypeConfiguration<Match>
     {

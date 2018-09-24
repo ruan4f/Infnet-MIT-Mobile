@@ -1,19 +1,19 @@
 ﻿using DomainModel.Entities;
 using DomainModel.Interfaces.Repositories;
-using Infra.Data.Context;
+using Infra.Data.SQLServer.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infra.Data.Repository
+namespace Infra.Data.SQLServer.Repository
 {
     public class MatchRepository : IMatchRepository
     {
-        private readonly EntityContext _context;
+        private readonly EntitySQLContext _context;
 
-        public MatchRepository(EntityContext context)
+        public MatchRepository(EntitySQLContext context)
         {
             _context = context;
         }

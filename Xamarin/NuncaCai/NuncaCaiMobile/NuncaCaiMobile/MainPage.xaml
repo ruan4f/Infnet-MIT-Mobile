@@ -3,7 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:NuncaCaiMobile"
              x:Class="NuncaCaiMobile.MainPage"
-             Title="Nunca Cai">    
+             Title="Nunca Cai">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Backup" Order="Primary" Text="Backup" Priority="0" />
+        <ToolbarItem Name="RestoreBackup" Order="Primary" Text="Restaurar Backup" Priority="1" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid RowSpacing="1" ColumnSpacing="1" Margin="5,2,5,2">
             <Grid.ColumnDefinitions>

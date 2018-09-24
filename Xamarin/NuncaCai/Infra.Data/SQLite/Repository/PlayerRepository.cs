@@ -1,18 +1,19 @@
 ﻿using DomainModel.Entities;
 using DomainModel.Interfaces.Repositories;
-using Infra.Data.Context;
+using Infra.Data.SQLite.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace Infra.Data.Repository
+namespace Infra.Data.SQLite.Repository
 {
     public class PlayerRepository : IPlayerRepository
     {
-        private readonly EntityContext _context;
-        
-        public PlayerRepository(EntityContext context)
+        private readonly EntitySQLiteContext _context;
+
+        public PlayerRepository(EntitySQLiteContext context)
         {
             _context = context;
         }
@@ -38,7 +39,7 @@ namespace Infra.Data.Repository
             var entry = _context.Entry(player);
             entry.State = EntityState.Modified;
 
-            _context.Players.Attach(player);        
+            _context.Players.Attach(player);
             await _context.SaveChangesAsync();
         }
     }
