@@ -1,9 +1,6 @@
 ﻿using DomainModel.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Infra.Data.SQLite.EntityConfig
 {
@@ -30,8 +27,6 @@ namespace Infra.Data.SQLite.EntityConfig
                 .WithMany(t => t.WinnerMatches)
                 .HasForeignKey(m => m.WinnerId)
                 .OnDelete(DeleteBehavior.Restrict);
-
-
         }
 
     }

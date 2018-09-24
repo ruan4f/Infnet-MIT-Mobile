@@ -1,9 +1,8 @@
 ﻿using DomainModel.Entities;
+using Infra.Data.SQLite.EntityConfig;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Infra.Data.SQLite.Context
 {
@@ -35,10 +34,18 @@ namespace Infra.Data.SQLite.Context
             // Create database if not there
             Database.EnsureCreated();
         }
-
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite($"Filename={DbPath}");
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlite($"Filename={DbPath}");
+            }
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new MatchConfig());
         }
     }
 }
