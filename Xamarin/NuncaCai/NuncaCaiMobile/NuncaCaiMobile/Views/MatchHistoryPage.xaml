@@ -18,12 +18,12 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Margin="5">
-                                <Label x:Name="lblPlayer1" Text="{Binding Player1.Name}" TextColor="Black" FontSize="16" 
+                                <Label x:Name="lblPlayer1" Text="{Binding MatchPlayed.Player1.Name}" TextColor="Black" FontSize="16" 
                                            HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand"                                           
-                                           BackgroundColor="{Binding Player1Winner, Converter={StaticResource BackgroundWinnerConverter}}"/>
-                                <Label x:Name="lblPlayer2" Text="{Binding Player2.Name}" TextColor="Black" FontSize="16" 
+                                           BackgroundColor="{Binding MatchPlayed.Player1Winner, Converter={StaticResource BackgroundWinnerConverter}}"/>
+                                <Label x:Name="lblPlayer2" Text="{Binding MatchPlayed.Player2.Name}" TextColor="Black" FontSize="16" 
                                            HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" 
-                                           BackgroundColor="{Binding Player2Winner, Converter={StaticResource BackgroundWinnerConverter}}" />
+                                           BackgroundColor="{Binding MatchPlayed.Player2Winner, Converter={StaticResource BackgroundWinnerConverter}}" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

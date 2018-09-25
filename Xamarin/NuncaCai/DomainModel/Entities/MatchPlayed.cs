@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-
-using System.Text;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DomainModel.Entities
 {
@@ -45,6 +43,12 @@ namespace DomainModel.Entities
         
         public Guid WinnerId { get; set; }        
         public Player Winner { get; set; }
+
+        [NotMapped]
+        public bool Player1Winner => Player1Id == WinnerId;
+
+        [NotMapped]
+        public bool Player2Winner => Player2Id == WinnerId;
 
     }
 }

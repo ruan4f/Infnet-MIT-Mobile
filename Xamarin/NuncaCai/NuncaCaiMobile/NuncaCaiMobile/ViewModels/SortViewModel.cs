@@ -36,6 +36,10 @@ namespace NuncaCaiMobile.ViewModels
 
             matchPlayed.Player1.Point += 1;
 
+            var player = matchPlayed.Player1;
+
+            await App.PlayerService.UpdateSync(player);
+
             matchPlayed.WinnerId = matchPlayed.Player1Id;
             matchPlayed.Winner = matchPlayed.Player1;
 
@@ -50,6 +54,10 @@ namespace NuncaCaiMobile.ViewModels
             var matchPlayed = match.MatchPlayed;
 
             matchPlayed.Player2.Point += 1;
+
+            var player = matchPlayed.Player2;
+
+            await App.PlayerService.UpdateSync(player);
 
             matchPlayed.WinnerId = matchPlayed.Player2Id;
             matchPlayed.Winner = matchPlayed.Player2;

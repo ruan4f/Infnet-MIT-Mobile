@@ -46,7 +46,7 @@ namespace Infra.Data.SQLite.Repository
             var player1 = await _context.Players.FindAsync(player1Id);
             var player2 = await _context.Players.FindAsync(player2Id);
             var winner = await _context.Players.FindAsync(winnerId);
-            
+
             var match = new Match(id, player1, player2, winner);
 
             await _context.Matches.AddAsync(match);
@@ -56,7 +56,13 @@ namespace Infra.Data.SQLite.Repository
 
         public IEnumerable<Match> GetAll()
         {
-            return _context.Matches;
+            return _context.Matches
+                            .Include(m => m.MatchesPlayed)
+                                .ThenInclude(mp => mp.Player1)
+                            .Include(m => m.MatchesPlayed)
+                                .ThenInclude(mp => mp.Player2)
+                            .Include(m => m.MatchesPlayed)
+                                .ThenInclude(mp => mp.Winner);
         }
 
         public async Task<Match> GetByIdSync(Guid id)
