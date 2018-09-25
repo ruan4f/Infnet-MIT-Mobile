@@ -18,12 +18,35 @@ namespace Infra.Data.SQLite.Repository
             _context = context;
         }
 
+        public async Task AddSync(Match match)
+        {
+            try
+            {
+                var newMatch = new Match(match.MatchId, match.MatchDate);
+
+                var player1 = await _context.Players.FindAsync(match.MatchPlayed.Player1Id);
+                var player2 = await _context.Players.FindAsync(match.MatchPlayed.Player2Id);
+                var winner = await _context.Players.FindAsync(match.MatchPlayed.WinnerId);
+
+                await _context.Matches.AddAsync(newMatch);
+
+                newMatch.MatchesPlayed.Add(new MatchPlayed(match, player1, player2, winner));
+
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
         public async Task AddSync(Guid id, Guid player1Id, Guid player2Id, Guid winnerId)
         {
             var player1 = await _context.Players.FindAsync(player1Id);
             var player2 = await _context.Players.FindAsync(player2Id);
             var winner = await _context.Players.FindAsync(winnerId);
-
+            
             var match = new Match(id, player1, player2, winner);
 
             await _context.Matches.AddAsync(match);

@@ -18,6 +18,20 @@ namespace Infra.Data.SQLServer.Repository
             _context = context;
         }
 
+        public async Task AddSync(Match match)
+        {
+            try
+            {
+                await _context.Matches.AddAsync(match);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }            
+        }
+
         public async Task AddSync(Guid id, Guid player1Id, Guid player2Id, Guid winnerId)
         {
             var player1 = await _context.Players.FindAsync(player1Id);

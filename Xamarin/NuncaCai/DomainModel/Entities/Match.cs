@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 
@@ -9,6 +10,13 @@ namespace DomainModel.Entities
     {
         public Match()
         {
+            MatchesPlayed = new HashSet<MatchPlayed>();
+        }
+
+        public Match(Guid id, DateTime date)
+        {
+            MatchId = id;
+            MatchDate = date;
             MatchesPlayed = new HashSet<MatchPlayed>();
         }
 
@@ -40,6 +48,7 @@ namespace DomainModel.Entities
 
         public Guid MatchId { get; set; }
 
+        [NotMapped]
         public MatchPlayed MatchPlayed => MatchesPlayed.FirstOrDefault(m => m.MatchId == MatchId);
 
         public virtual ICollection<MatchPlayed> MatchesPlayed { get; set; }

@@ -34,6 +34,8 @@ namespace NuncaCaiMobile.ViewModels
             var index = Matches.IndexOf(match);
             var matchPlayed = match.MatchPlayed;
 
+            matchPlayed.Player1.Point += 1;
+
             matchPlayed.WinnerId = matchPlayed.Player1Id;
             matchPlayed.Winner = matchPlayed.Player1;
 
@@ -45,10 +47,12 @@ namespace NuncaCaiMobile.ViewModels
         private async Task Winner2(Match match)
         {
             var index = Matches.IndexOf(match);
-            //var winnerId = match.Player2Id;
+            var matchPlayed = match.MatchPlayed;
 
-            //match.WinnerId = winnerId;
-            //match.Player2.Point += 1;
+            matchPlayed.Player2.Point += 1;
+
+            matchPlayed.WinnerId = matchPlayed.Player2Id;
+            matchPlayed.Winner = matchPlayed.Player2;
 
             Matches[index] = match;
 
