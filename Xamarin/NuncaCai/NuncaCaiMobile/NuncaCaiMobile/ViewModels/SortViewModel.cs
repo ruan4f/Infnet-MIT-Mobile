@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -11,7 +10,6 @@ namespace NuncaCaiMobile.ViewModels
 {
     public class SortViewModel : BaseViewModel
     {
-
         public SortViewModel(INavigation navigation) : base(navigation)
         {
             Matches = new ObservableCollection<Match>(GenerateMatches(App.PlayerService.GetAll()));
@@ -34,9 +32,10 @@ namespace NuncaCaiMobile.ViewModels
         private async Task Winner1(Match match)
         {
             var index = Matches.IndexOf(match);
-            var winnerId = match.Player1Id;
+            var matchPlayed = match.MatchPlayed;
 
-            match.WinnerId = winnerId;
+            matchPlayed.WinnerId = matchPlayed.Player1Id;
+            matchPlayed.Winner = matchPlayed.Player1;
 
             Matches[index] = match;
 
@@ -46,9 +45,11 @@ namespace NuncaCaiMobile.ViewModels
         private async Task Winner2(Match match)
         {
             var index = Matches.IndexOf(match);
-            var winnerId = match.Player2Id;
+            //var winnerId = match.Player2Id;
 
-            match.WinnerId = winnerId;
+            //match.WinnerId = winnerId;
+            //match.Player2.Point += 1;
+
             Matches[index] = match;
 
             await App.MatchService.AddSync(match);

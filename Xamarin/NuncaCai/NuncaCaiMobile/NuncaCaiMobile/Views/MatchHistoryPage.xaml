@@ -1,8 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:NuncaCaiMobile.Converters"
              x:Class="NuncaCaiMobile.Views.MatchHistoryPage"
              Title="Histórico de Partidas">
+    <ContentPage.Resources>
+        <local:BackgroundWinnerConverter x:Key="BackgroundWinnerConverter" />
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
             <ListView 
@@ -13,14 +17,13 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label x:Name="lblPlayer1" Text="{Binding Player1.Name}" TextColor="Black" FontSize="16" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
-                                    <Label x:Name="lblPlayer2" Text="{Binding Player2.Name}" TextColor="Black" FontSize="16" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
-                                </StackLayout>
-                                <StackLayout>
-                                    <Label x:Name="lblWinner" Text="{Binding Winner.Name}" TextColor="Black" FontSize="16" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
-                                </StackLayout>
+                            <StackLayout Orientation="Horizontal" Margin="5">
+                                <Label x:Name="lblPlayer1" Text="{Binding Player1.Name}" TextColor="Black" FontSize="16" 
+                                           HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand"                                           
+                                           BackgroundColor="{Binding Player1Winner, Converter={StaticResource BackgroundWinnerConverter}}"/>
+                                <Label x:Name="lblPlayer2" Text="{Binding Player2.Name}" TextColor="Black" FontSize="16" 
+                                           HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" 
+                                           BackgroundColor="{Binding Player2Winner, Converter={StaticResource BackgroundWinnerConverter}}" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

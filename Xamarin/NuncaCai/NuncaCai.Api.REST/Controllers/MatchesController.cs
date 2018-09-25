@@ -45,6 +45,34 @@ namespace NuncaCai.Api.REST.Controllers
             return Ok(match);
         }
 
+        [HttpPost]
+        [Route("{id}/backup")]
+        public async Task<IActionResult> BackupMatch([FromBody] List<Match> matches)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            //await _service.AddSync(player);
+
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("restore-backup")]
+        public async Task<IActionResult> RestoreBackupMatch()
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            //await _service.AddSync(player);
+
+            return Ok();
+        }
+
         // POST: api/Matches
         [HttpPost]
         public async Task<IActionResult> PostMatch([FromBody] MatchModel match)

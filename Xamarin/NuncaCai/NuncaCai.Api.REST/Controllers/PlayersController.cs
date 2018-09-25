@@ -89,23 +89,35 @@ namespace NuncaCai.Api.REST.Controllers
 
             await _service.AddPointSync(id);
 
-            //try
-            //{
-            //    await _context.SaveChangesAsync();
-            //}
-            //catch (DbUpdateConcurrencyException)
-            //{
-            //    if (!PlayerExists(id))
-            //    {
-            //        return NotFound();
-            //    }
-            //    else
-            //    {
-            //        throw;
-            //    }
-            //}
-
             return NoContent();
+        }
+
+        [HttpPost]
+        [Route("{id}/backup")]
+        public async Task<IActionResult> BackupPlayer([FromBody] List<Player> players)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            //await _service.AddSync(player);
+
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("restore-backup")]
+        public async Task<IActionResult> RestoreBackupMatch()
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            //await _service.AddSync(player);
+
+            return Ok();
         }
 
         //POST: api/Players

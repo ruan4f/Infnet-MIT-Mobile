@@ -19,8 +19,8 @@
                             <ViewCell.View>
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal">
-                                        <Label x:Name="lblPlayer1" Text="{Binding Player1.Name}" TextColor="Black" FontSize="16" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
-                                        <Label x:Name="lblPlayer2" Text="{Binding Player2.Name}" TextColor="Black" FontSize="16" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
+                                        <Label x:Name="lblPlayer1" Text="{Binding MatchPlayed.Player1.Name}" TextColor="Black" FontSize="16" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
+                                        <Label x:Name="lblPlayer2" Text="{Binding MatchPlayed.Player2.Name}" TextColor="Black" FontSize="16" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
                                     </StackLayout>
                                     <StackLayout Orientation="Horizontal">
                                         <Button x:Name="btn_winner_player1" Text="Vencedor" HorizontalOptions="FillAndExpand" 

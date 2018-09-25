@@ -1,4 +1,5 @@
 ﻿using DomainModel.Entities;
+
 using Infra.Data.SQLServer.EntityConfig;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,7 +29,7 @@ namespace Infra.Data.SQLServer.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new MatchConfig());
+            modelBuilder.ApplyConfiguration(new MatchPlayedConfig());
         }
 
     }

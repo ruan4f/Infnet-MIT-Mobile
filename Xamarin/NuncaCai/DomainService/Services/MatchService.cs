@@ -23,7 +23,8 @@ namespace DomainService.Services
 
         public async Task AddSync(Match match)
         {
-            await _repository.AddSync(match.MatchId, match.Player1Id, match.Player2Id, match.WinnerId);
+            // await _repository.AddSync(match.MatchId, match.Player1Id, match.Player2Id, match.WinnerId);
+            await _repository.AddSync(match.MatchId, Guid.NewGuid(), Guid.NewGuid(), Guid.NewGuid());
         }
 
         public IEnumerable<Match> GetAll()

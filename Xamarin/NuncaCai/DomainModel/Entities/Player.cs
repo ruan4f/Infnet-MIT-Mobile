@@ -8,9 +8,12 @@ namespace DomainModel.Entities
     {
         public Player()
         {
-            FirstMatches = new List<Match>();
-            SecondMatches = new List<Match>();
-            WinnerMatches = new List<Match>();
+            //FirstMatches = new List<Match>();
+            //SecondMatches = new List<Match>();
+            //WinnerMatches = new List<Match>();
+            FirstMatchesPlayed = new HashSet<MatchPlayed>();
+            SecondMatchesPlayed = new HashSet<MatchPlayed>();
+            WinnerMatchesPlayed = new HashSet<MatchPlayed>();
         }
 
         public Player(string name)
@@ -18,11 +21,15 @@ namespace DomainModel.Entities
             PlayerId = Guid.NewGuid();
             Name = name;
             Point = 0;
-            RegistrationDate = new DateTime();
+            RegistrationDate = DateTime.Now;
 
-            FirstMatches = new List<Match>();
-            SecondMatches = new List<Match>();
-            WinnerMatches = new List<Match>();
+            FirstMatchesPlayed = new HashSet<MatchPlayed>();
+            SecondMatchesPlayed = new HashSet<MatchPlayed>();
+            WinnerMatchesPlayed = new HashSet<MatchPlayed>();
+
+            //FirstMatches = new List<Match>();
+            //SecondMatches = new List<Match>();
+            //WinnerMatches = new List<Match>();
         }
 
         public Guid PlayerId { get; set; }
@@ -32,10 +39,14 @@ namespace DomainModel.Entities
         public int Point { get; set; }
 
         public DateTime RegistrationDate { get; set; }
-        
-        public virtual ICollection<Match> FirstMatches { get; set; }
-        public virtual ICollection<Match> SecondMatches { get; set; }
-        public virtual ICollection<Match> WinnerMatches { get; set; }
+
+        public virtual ICollection<MatchPlayed> FirstMatchesPlayed { get; set; }
+        public virtual ICollection<MatchPlayed> SecondMatchesPlayed { get; set; }
+        public virtual ICollection<MatchPlayed> WinnerMatchesPlayed { get; set; }
+
+        //public virtual ICollection<Match> FirstMatches { get; set; }
+        //public virtual ICollection<Match> SecondMatches { get; set; }
+        //public virtual ICollection<Match> WinnerMatches { get; set; }
 
     }
 }
