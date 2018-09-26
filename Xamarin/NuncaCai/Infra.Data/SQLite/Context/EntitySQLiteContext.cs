@@ -46,8 +46,6 @@ namespace Infra.Data.SQLite.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new MatchPlayedConfig());
-            //modelBuilder.ApplyConfiguration(new PlayerConfig());
-            //modelBuilder.ApplyConfiguration(new MatchConfig());
         }
     }
 }

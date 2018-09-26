@@ -4,7 +4,7 @@ using Infra.Data.SQLite.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Infra.Data.SQLite.Repository
@@ -20,25 +20,17 @@ namespace Infra.Data.SQLite.Repository
 
         public async Task AddSync(Match match)
         {
-            try
-            {
-                var newMatch = new Match(match.MatchId, match.MatchDate);
+            Match newMatch = new Match(match.MatchId, match.MatchDate);
 
-                var player1 = await _context.Players.FindAsync(match.MatchPlayed.Player1Id);
-                var player2 = await _context.Players.FindAsync(match.MatchPlayed.Player2Id);
-                var winner = await _context.Players.FindAsync(match.MatchPlayed.WinnerId);
+            var player1 = await _context.Players.FindAsync(match.MatchPlayed.Player1Id);
+            var player2 = await _context.Players.FindAsync(match.MatchPlayed.Player2Id);
+            var winner = await _context.Players.FindAsync(match.MatchPlayed.WinnerId);
 
-                await _context.Matches.AddAsync(newMatch);
+            await _context.Matches.AddAsync(newMatch);
 
-                newMatch.MatchesPlayed.Add(new MatchPlayed(match, player1, player2, winner));
+            newMatch.MatchesPlayed.Add(new MatchPlayed(match, player1, player2, winner));
 
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
+            await _context.SaveChangesAsync();
         }
 
         public async Task AddSync(Guid id, Guid player1Id, Guid player2Id, Guid winnerId)
@@ -72,10 +64,9 @@ namespace Infra.Data.SQLite.Repository
 
         public async Task UpdateSync(Match match)
         {
-            var entry = _context.Entry(match);
-            entry.State = EntityState.Modified;
+            _context.Matches.First(s => s.MatchId == match.MatchId);
+            _context.Update(match);
 
-            _context.Matches.Attach(match);
             await _context.SaveChangesAsync();
         }
     }

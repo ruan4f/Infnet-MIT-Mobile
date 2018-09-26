@@ -1,10 +1,9 @@
 ﻿using DomainModel.Entities;
 using DomainModel.Interfaces.Repositories;
 using Infra.Data.SQLite.Context;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Infra.Data.SQLite.Repository
@@ -36,10 +35,9 @@ namespace Infra.Data.SQLite.Repository
 
         public async Task UpdateSync(Player player)
         {
-            var entry = _context.Entry(player);
-            entry.State = EntityState.Modified;
+            _context.Players.First(s => s.PlayerId == player.PlayerId);
+            _context.Update(player);
 
-            _context.Players.Attach(player);
             await _context.SaveChangesAsync();
         }
     }

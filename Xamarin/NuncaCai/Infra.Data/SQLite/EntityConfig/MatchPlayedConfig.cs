@@ -9,7 +9,7 @@ namespace Infra.Data.SQLite.EntityConfig
 
         public void Configure(EntityTypeBuilder<MatchPlayed> builder)
         {
-            builder.HasKey(x => new { x.MatchId, x.Player1Id });
+            builder.HasKey(x => new { x.MatchId, x.Player1Id, x.Player2Id });
 
             builder
                 .HasOne(m => m.Match)

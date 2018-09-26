@@ -59,22 +59,6 @@ namespace NuncaCai.Api.REST.Controllers
             }
 
             await _service.UpdateSync(player);
-                       
-            //try
-            //{
-            //    await _context.SaveChangesAsync();
-            //}
-            //catch (DbUpdateConcurrencyException)
-            //{
-            //    if (!PlayerExists(id))
-            //    {
-            //        return NotFound();
-            //    }
-            //    else
-            //    {
-            //        throw;
-            //    }
-            //}
 
             return NoContent();
         }
