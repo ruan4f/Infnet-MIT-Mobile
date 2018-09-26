@@ -19,18 +19,18 @@ namespace Infra.Data.SQLServer.Repository
         }
 
         public async Task AddSync(Match match)
-        {            
-                Match newMatch = new Match(match.MatchId, match.MatchDate);
+        {
+            Match newMatch = new Match(match.MatchId, match.MatchDate);
 
-                var player1 = await _context.Players.FindAsync(match.MatchPlayed.Player1Id);
-                var player2 = await _context.Players.FindAsync(match.MatchPlayed.Player2Id);
-                var winner = await _context.Players.FindAsync(match.MatchPlayed.WinnerId);
+            var player1 = await _context.Players.FindAsync(match.MatchPlayed.Player1Id);
+            var player2 = await _context.Players.FindAsync(match.MatchPlayed.Player2Id);
+            var winner = await _context.Players.FindAsync(match.MatchPlayed.WinnerId);
 
-                await _context.Matches.AddAsync(newMatch);
+            await _context.Matches.AddAsync(newMatch);
 
-                newMatch.MatchesPlayed.Add(new MatchPlayed(match, player1, player2, winner));
+            newMatch.MatchesPlayed.Add(new MatchPlayed(match, player1, player2, winner));
 
-                await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
 
         public async Task AddSync(Guid id, Guid player1Id, Guid player2Id, Guid winnerId)

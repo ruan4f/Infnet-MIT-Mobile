@@ -8,7 +8,6 @@ namespace DomainModel.Interfaces.Services
 {
     public interface IPlayerService
     {
-
         Task AddSync(Player player);
 
         Task UpdateSync(Player player);
