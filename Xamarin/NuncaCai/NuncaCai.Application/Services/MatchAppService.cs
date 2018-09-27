@@ -10,17 +10,20 @@ namespace NuncaCai.Application.Services
     public class MatchAppService : IMatchAppService
     {
         private readonly IMatchService _matchService;
-        private readonly IPlayerService _playerService;
 
-        public MatchAppService(IMatchService matchService, IPlayerService playerService)
+        public MatchAppService(IMatchService matchService)
         {
             _matchService = matchService;
-            _playerService = playerService;
         }
 
         public async Task AddSync(Guid id, Guid player1Id, Guid player2Id, Guid winnerId)
         {
             await _matchService.AddSync(id, player1Id, player2Id, winnerId);
+        }
+
+        public async Task AddSync(Match match)
+        {
+            await _matchService.AddSync(match);
         }
 
         public IEnumerable<Match> GetAll()
@@ -31,6 +34,11 @@ namespace NuncaCai.Application.Services
         public async Task<Match> GetByIdSync(Guid id)
         {
             return await _matchService.GetByIdSync(id);
-        }                
+        }
+
+        public async Task UpdateSync(Match match)
+        {
+            await _matchService.UpdateSync(match);
+        }
     }
 }

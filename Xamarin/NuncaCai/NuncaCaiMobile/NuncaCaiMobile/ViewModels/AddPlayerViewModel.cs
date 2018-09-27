@@ -1,7 +1,4 @@
 ﻿using DomainModel.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -29,6 +26,7 @@ namespace NuncaCaiMobile.ViewModels
         private async Task AddPlayer()
         {
             await App.PlayerService.AddSync(new Player(Name));
+            await Application.Current.MainPage.DisplayAlert("Jogador", $"{Name} foi adicionado(a) com sucesso", "OK");
             await Navigation.PopAsync();
         }
     }

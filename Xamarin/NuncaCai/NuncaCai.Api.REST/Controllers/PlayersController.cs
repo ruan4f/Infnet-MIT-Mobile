@@ -85,7 +85,10 @@ namespace NuncaCai.Api.REST.Controllers
                 return BadRequest(ModelState);
             }
 
-            //await _service.AddSync(player);
+            foreach (var player in players)
+            {
+                await _service.AddSync(player);
+            }
 
             return Ok();
         }
@@ -99,9 +102,9 @@ namespace NuncaCai.Api.REST.Controllers
                 return BadRequest(ModelState);
             }
 
-            //await _service.AddSync(player);
+            var players = _service.GetAll();
 
-            return Ok();
+            return Ok(players);
         }
 
         //POST: api/Players

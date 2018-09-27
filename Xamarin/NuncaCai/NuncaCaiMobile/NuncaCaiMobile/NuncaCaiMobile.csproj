@@ -12,6 +12,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.3" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Xamarin.Essentials" Version="0.10.0-preview" />
     <PackageReference Include="Xamarin.Forms" Version="3.2.0.839982" />
   </ItemGroup>
 
@@ -19,6 +20,7 @@
     <ProjectReference Include="..\..\DomainModel\DomainModel.csproj" />
     <ProjectReference Include="..\..\DomainService\DomainService.csproj" />
     <ProjectReference Include="..\..\Infra.Data\Infra.Data.csproj" />
+    <ProjectReference Include="..\..\NuncaCai.Application\NuncaCai.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,5 +39,9 @@
     <EmbeddedResource Update="Views\SortPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>

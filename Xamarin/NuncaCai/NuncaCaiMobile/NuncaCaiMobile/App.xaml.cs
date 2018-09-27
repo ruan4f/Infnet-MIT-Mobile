@@ -1,8 +1,8 @@
-﻿using DomainModel.Interfaces.Services;
-using DomainService.Services;
+﻿using DomainService.Services;
 using Infra.Data.SQLite.Context;
 using Infra.Data.SQLite.Repository;
-using System;
+using NuncaCai.Application.Interfaces;
+using NuncaCai.Application.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,8 +11,8 @@ namespace NuncaCaiMobile
 {
     public partial class App : Application
     {
-        public static IPlayerService PlayerService { get; set; }
-        public static IMatchService MatchService { get; set; }
+        public static IPlayerAppService PlayerService { get; set; }
+        public static IMatchAppService MatchService { get; set; }
 
         public App()
         {
@@ -20,8 +20,8 @@ namespace NuncaCaiMobile
 
             var runtimePlatform = Device.RuntimePlatform;
 
-            PlayerService = new PlayerService(new PlayerRepository(new EntitySQLiteContext(runtimePlatform)));
-            MatchService = new MatchService(new MatchRepository(new EntitySQLiteContext(runtimePlatform)));
+            PlayerService = new PlayerAppService(new PlayerService(new PlayerRepository(new EntitySQLiteContext(runtimePlatform))));
+            MatchService = new MatchAppService(new MatchService(new MatchRepository(new EntitySQLiteContext(runtimePlatform))));
 
             MainPage = new NavigationPage(new MainPage());
         }

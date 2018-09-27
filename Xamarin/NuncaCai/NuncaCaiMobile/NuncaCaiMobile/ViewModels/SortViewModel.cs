@@ -42,10 +42,12 @@ namespace NuncaCaiMobile.ViewModels
 
             matchPlayed.WinnerId = matchPlayed.Player1Id;
             matchPlayed.Winner = matchPlayed.Player1;
-
-            Matches[index] = match;
-
+            
             await App.MatchService.AddSync(match);
+
+            Matches.RemoveAt(index);
+
+            await Application.Current.MainPage.DisplayAlert("Vencedor", $"{player.Name} foi o(a) vencedor(a) dessa partida", "OK");
         }
 
         private async Task Winner2(Match match)
@@ -61,10 +63,12 @@ namespace NuncaCaiMobile.ViewModels
 
             matchPlayed.WinnerId = matchPlayed.Player2Id;
             matchPlayed.Winner = matchPlayed.Player2;
-
-            Matches[index] = match;
-
+            
             await App.MatchService.AddSync(match);
+
+            Matches.RemoveAt(index);
+
+            await Application.Current.MainPage.DisplayAlert("Vencedor", $"{player.Name} foi o(a) vencedor(a) dessa partida", "OK");
         }
 
         private List<Match> GenerateMatches(IEnumerable<Player> players)

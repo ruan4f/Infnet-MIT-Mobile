@@ -16,7 +16,7 @@ namespace NuncaCaiMobile.Views
 		public SortPage ()
 		{
 			InitializeComponent ();
-            BindingContext = new SortViewModel(Navigation);
+            BindingContext = new SortViewModel(Navigation);            
 		}
 	}
 }

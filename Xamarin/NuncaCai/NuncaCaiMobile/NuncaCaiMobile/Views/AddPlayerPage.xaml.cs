@@ -16,7 +16,7 @@ namespace NuncaCaiMobile.Views
 		public AddPlayerPage ()
 		{
 			InitializeComponent ();
-            BindingContext = new AddPlayerViewModel(Navigation);
+            BindingContext = new AddPlayerViewModel(Navigation);            
 		}
 	}
 }
