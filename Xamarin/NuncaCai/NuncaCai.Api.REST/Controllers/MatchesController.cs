@@ -46,7 +46,7 @@ namespace NuncaCai.Api.REST.Controllers
         }
 
         [HttpPost]
-        [Route("{id}/backup")]
+        [Route("execute-backup")]
         public async Task<IActionResult> BackupMatch([FromBody] List<Match> matches)
         {
             if (!ModelState.IsValid)
@@ -64,7 +64,7 @@ namespace NuncaCai.Api.REST.Controllers
 
         [HttpGet]
         [Route("restore-backup")]
-        public async Task<IActionResult> RestoreBackupMatch()
+        public IActionResult RestoreBackupMatch()
         {
             if (!ModelState.IsValid)
             {
@@ -90,6 +90,19 @@ namespace NuncaCai.Api.REST.Controllers
             await _service.AddSync(match.Id, match.Player1Id, match.Player2Id, match.WinnerId);
             
             return Ok();
-        }        
+        }
+
+        [HttpDelete]
+        public IActionResult DeleteMatches()
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _service.RemoveAll();
+
+            return Ok();
+        }
     }
 }

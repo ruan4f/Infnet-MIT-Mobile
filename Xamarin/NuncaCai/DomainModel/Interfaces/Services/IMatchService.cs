@@ -13,5 +13,6 @@ namespace DomainModel.Interfaces.Services
         Task UpdateSync(Match match);
         IEnumerable<Match> GetAll();
         Task<Match> GetByIdSync(Guid id);
+        void RemoveAll();
     }
 }

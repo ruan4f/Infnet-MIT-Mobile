@@ -33,6 +33,14 @@ namespace Infra.Data.SQLServer.Repository
             return await _context.Players.FindAsync(id);
         }
 
+        public void RemoveAll()
+        {
+            foreach (var item in _context.Players)
+                _context.Players.Remove(item);
+
+            _context.SaveChanges();
+        }
+
         public async Task UpdateSync(Player player)
         {
             _context.Players.First(s => s.PlayerId == player.PlayerId);

@@ -16,5 +16,7 @@ namespace NuncaCai.Application.Interfaces
         IEnumerable<Player> GetAll();
 
         Task<Player> GetByIdSync(Guid id);
+
+        void RemoveAll();
     }
 }

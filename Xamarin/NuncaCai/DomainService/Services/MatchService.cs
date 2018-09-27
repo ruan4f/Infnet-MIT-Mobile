@@ -36,6 +36,11 @@ namespace DomainService.Services
             return await _repository.GetByIdSync(id);
         }
 
+        public void RemoveAll()
+        {
+            _repository.RemoveAll();
+        }
+
         public async Task UpdateSync(Match match)
         {
             await _repository.UpdateSync(match);

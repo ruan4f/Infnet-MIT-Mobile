@@ -40,6 +40,11 @@ namespace DomainService.Services
             return await _repository.GetByIdSync(id);
         }
 
+        public void RemoveAll()
+        {
+            _repository.RemoveAll();
+        }
+
         public async Task UpdateSync(Player player)
         {
             await _repository.UpdateSync(player);

@@ -18,5 +18,6 @@ namespace DomainModel.Interfaces.Services
 
         Task<Player> GetByIdSync(Guid id);
 
+        void RemoveAll();
     }
 }

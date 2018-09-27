@@ -12,5 +12,6 @@ namespace DomainModel.Interfaces.Repositories
         Task UpdateSync(Player match);
         Task<Player> GetByIdSync(Guid id);
         IEnumerable<Player> GetAll();
+        void RemoveAll();
     }
 }

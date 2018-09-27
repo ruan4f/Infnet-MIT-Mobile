@@ -44,11 +44,15 @@ namespace NuncaCai.Application.Services
             await _playerService.UpdateSync(player);
         }
 
+        public void RemoveAll()
+        {
+            _playerService.RemoveAll();
+        }
+
         public async Task<bool> ExecuteBackup() //Backup to RemoteRepository
         {
             HttpClient client = new HttpClient();
-            //client.BaseAddress = new Uri("http://localhost:55127/api/");
-            client.BaseAddress = new Uri("https://amazingnoteswebapi.azurewebsites.net/api/");
+            client.BaseAddress = new Uri("http://localhost:55127/api/");
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -62,6 +66,33 @@ namespace NuncaCai.Application.Services
             //    if (!request.IsSuccessStatusCode)
             //        return false;
             //}
+            return true;
+        }
+
+        public async Task<bool> RestoreBackup() //Restore from RemoteRepository
+        {
+            
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("http://localhost:55127/api/");
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            
+            var requestResult = await client.GetAsync("players");
+
+            if (!requestResult.IsSuccessStatusCode)
+                return false; //Could not restore the backup
+
+            //string serializedItems = await requestResult.Content.ReadAsStringAsync();
+            //IEnumerable<Item> restoredItems = JsonConvert
+            //    .DeserializeObject<IEnumerable<Item>>(serializedItems)
+            //    .OrderBy(i => i.PublishDateTime);
+
+            //RemoveAllItems();
+            //foreach (var item in restoredItems)
+            //{
+            //    AddItem(item);
+            //}
+
             return true;
         }
     }

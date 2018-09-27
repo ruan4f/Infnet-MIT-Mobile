@@ -62,6 +62,14 @@ namespace Infra.Data.SQLServer.Repository
             return await _context.Matches.FindAsync(id);
         }
 
+        public void RemoveAll()
+        {
+            foreach (var item in _context.Matches)            
+                _context.Matches.Remove(item);            
+
+            _context.SaveChanges();
+        }
+
         public async Task UpdateSync(Match match)
         {
             _context.Matches.First(s => s.MatchId == match.MatchId);
