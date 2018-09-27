@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -12,10 +13,19 @@ namespace NuncaCaiMobile.ViewModels
     {
         public SortViewModel(INavigation navigation) : base(navigation)
         {
-            Matches = new ObservableCollection<Match>(GenerateMatches(App.PlayerService.GetAll()));
+            var players = App.PlayerService.GetAll();
 
-            Winner1Command = new Command<Match>(async q => await Winner1(q));
-            Winner2Command = new Command<Match>(async q => await Winner2(q));
+            if (VerifyQuantityPlayers(players))
+            {
+                Matches = new ObservableCollection<Match>(GenerateMatches(players));
+
+                Winner1Command = new Command<Match>(async q => await Winner1(q));
+                Winner2Command = new Command<Match>(async q => await Winner2(q));
+            }
+            else
+            {
+                Application.Current.MainPage.DisplayAlert("Error ao sortear duplas", "Para poder sortear as duplas a quantidade de usuários cadastrados deve ser par.", "OK");
+            }            
         }
 
         private ObservableCollection<Match> _matches;
@@ -91,8 +101,7 @@ namespace NuncaCaiMobile.ViewModels
 
             return newMatches;
         }
-
-
+        
         private List<Player> Randomize(IEnumerable<Player> players)
         {
             var playersRandomized = new List<Player>(players);
@@ -109,6 +118,11 @@ namespace NuncaCaiMobile.ViewModels
             }
 
             return playersRandomized;
+        }
+
+        private bool VerifyQuantityPlayers(IEnumerable<Player> players)
+        {
+            return players.Count() % 2 == 0;
         }
 
     }

@@ -23,6 +23,8 @@
             <Button Grid.Row="0" Grid.Column="1" x:Name="Btn_Sort" Text="Sortear Duplas" Clicked="Btn_Sort_Clicked"/>
             <Button Grid.Row="1" Grid.Column="0" x:Name="Btn_MatchHistory"  Text="Histórico de Partidas" Clicked="Btn_MatchHistory_Clicked"/>
             <Button Grid.Row="1" Grid.Column="1" x:Name="Btn_Ranking" Text="Ranking" Clicked="Btn_Ranking_Clicked"/>
+            
         </Grid>
+        
     </ContentPage.Content>
 </ContentPage>

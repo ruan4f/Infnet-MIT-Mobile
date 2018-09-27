@@ -19,15 +19,15 @@ namespace NuncaCaiMobile.ViewModels
             get { return _name; }
             set => SetProperty(ref _name, value);
         }
-
-
+        
         public ICommand AddCommand { get; set; }
 
         private async Task AddPlayer()
         {
-            await App.PlayerService.AddSync(new Player(Name));
-            await Application.Current.MainPage.DisplayAlert("Jogador", $"{Name} foi adicionado(a) com sucesso", "OK");
+            await App.PlayerService.AddSync(new Player(Name));            
             await Navigation.PopAsync();
+            await Application.Current.MainPage.DisplayAlert("Jogador", $"{Name} foi adicionado(a) com sucesso", "OK");
+            
         }
     }
 }

@@ -4,9 +4,9 @@
              x:Class="NuncaCaiMobile.Views.AddPlayerPage"
              Title="Adicionar Jogador">
     <ContentPage.Content>
-        <StackLayout Margin="15">
+        <StackLayout Margin="15"> 
             <Entry x:Name="Txt_Name" Placeholder="Nome" Text="{Binding Name,Mode=OneWayToSource}"/>
-            <Button x:Name="Btn_Add_Player" Text="Salvar" Command="{Binding AddCommand}"/>
+            <Button x:Name="Btn_Add_Player" Text="Salvar" Command="{Binding AddCommand}"/>            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
