@@ -14,7 +14,9 @@ namespace Infra.Data.SQLServer.Context
 
         public EntitySQLContext()
         {
-            DbPath = @"Data Source=.\SQLEXPRESS;Initial Catalog=NuncaCai;Integrated Security=True;";
+            //DbPath = @"Data Source=.\SQLEXPRESS;Initial Catalog=NuncaCai;Integrated Security=True;";
+
+            DbPath = @"Server=(localdb)\mssqllocaldb;Database=NuncaCai;Trusted_Connection=True;ConnectRetryCount=0";
 
             Database.EnsureCreated();
         }
