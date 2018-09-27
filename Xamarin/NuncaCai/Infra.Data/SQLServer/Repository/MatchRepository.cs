@@ -71,8 +71,19 @@ namespace Infra.Data.SQLServer.Repository
 
         public void RemoveAll()
         {
-            foreach (var item in _context.Matches)            
-                _context.Matches.Remove(item);            
+            var matches = _context.Matches
+                            .Include(m => m.MatchesPlayed)
+                                .ThenInclude(mp => mp.Player1)
+                            .Include(m => m.MatchesPlayed)
+                                .ThenInclude(mp => mp.Player2)
+                            .Include(m => m.MatchesPlayed)
+                                .ThenInclude(mp => mp.Winner);
+
+            foreach (var item in matches)
+            {
+                item.MatchesPlayed.Clear();
+                _context.Matches.Remove(item);
+            }                
 
             _context.SaveChanges();
         }
