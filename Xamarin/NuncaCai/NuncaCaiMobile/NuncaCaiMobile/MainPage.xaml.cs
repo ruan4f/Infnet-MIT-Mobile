@@ -33,8 +33,8 @@ namespace NuncaCaiMobile
 
         private async void Backup_Activated(object sender, EventArgs e)
         {
-            bool resultPlayers = await App.PlayerService.ExecuteBackup();
-            if (!resultPlayers)
+            bool result = await App.BackupService.ExecuteBackup();
+            if (!result)
             {
                 await DisplayAlert("Backup", "Error ao tentar realizar o backup. Verifica sua conexão com internet e tente novamente!", "Ok");
                 return;
@@ -44,7 +44,7 @@ namespace NuncaCaiMobile
 
         private async void RestoreBackup_Activated(object sender, EventArgs e)
         {
-            bool result = await App.PlayerService.RestoreBackup();
+            bool result = await App.BackupService.RestoreBackup();            
             if (!result)
             {
                 await DisplayAlert("Backup", "Error ao tentar restaurar o backup. Verifica sua conexão com internet e tente novamente!", "Ok");

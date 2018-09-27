@@ -13,15 +13,19 @@ namespace NuncaCaiMobile
     {
         public static IPlayerAppService PlayerService { get; set; }
         public static IMatchAppService MatchService { get; set; }
+        public static IBackupAppService BackupService { get; set; }
 
         public App()
         {
             InitializeComponent();
 
             var runtimePlatform = Device.RuntimePlatform;
+            var playerService = new PlayerService(new PlayerRepository(new EntitySQLiteContext(runtimePlatform)));
+            var matchService = new MatchService(new MatchRepository(new EntitySQLiteContext(runtimePlatform)));
 
-            PlayerService = new PlayerAppService(new PlayerService(new PlayerRepository(new EntitySQLiteContext(runtimePlatform))));
-            MatchService = new MatchAppService(new MatchService(new MatchRepository(new EntitySQLiteContext(runtimePlatform))));
+            PlayerService = new PlayerAppService(playerService);
+            MatchService = new MatchAppService(matchService);
+            BackupService = new BackupAppService(matchService, playerService);
 
             MainPage = new NavigationPage(new MainPage());
         }

@@ -1,7 +1,6 @@
 ﻿using DomainModel.Entities;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace NuncaCai.Application.Interfaces
@@ -12,6 +11,7 @@ namespace NuncaCai.Application.Interfaces
         Task AddSync(Match match);
         Task UpdateSync(Match match);
         IEnumerable<Match> GetAll();
+        IEnumerable<Match> GetSimpleAll();
         Task<Match> GetByIdSync(Guid id);
         void RemoveAll();
     }

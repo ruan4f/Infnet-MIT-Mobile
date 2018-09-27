@@ -21,9 +21,24 @@ namespace NuncaCai.Api.REST.Controllers
 
         // GET: api/Matches
         [HttpGet]
-        public IEnumerable<Match> GetMatches()
+        public IEnumerable<MatchModel> GetMatches()
         {
-            return _service.GetAll();
+            var matches = _service.GetAll();
+            var newMatches = new List<MatchModel>();
+
+
+            foreach (var item in matches)
+            {
+                newMatches.Add(new MatchModel {
+                    Id = item.MatchId,
+                    Player1Id = item.MatchPlayed.Player1Id,
+                    Player2Id = item.MatchPlayed.Player2Id,
+                    WinnerId = item.MatchPlayed.WinnerId,
+                    MatchDate = item.MatchDate
+                });
+            }
+
+            return newMatches;
         }
 
         // GET: api/Matches/5
@@ -54,7 +69,7 @@ namespace NuncaCai.Api.REST.Controllers
                 return BadRequest(ModelState);
             }
 
-            await _service.AddSync(match.Id, match.Player1Id, match.Player2Id, match.WinnerId);
+            await _service.AddSync(match.Id, match.Player1Id, match.Player2Id, match.WinnerId, match.MatchDate);
             
             return Ok();
         }

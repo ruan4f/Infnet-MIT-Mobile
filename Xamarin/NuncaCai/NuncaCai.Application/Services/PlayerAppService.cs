@@ -50,55 +50,5 @@ namespace NuncaCai.Application.Services
         {
             _playerService.RemoveAll();
         }
-
-        public async Task<bool> ExecuteBackup() //Backup to RemoteRepository
-        {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:21094/api/");
-            client.DefaultRequestHeaders.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            var request = await client.DeleteAsync("players");
-            if (!request.IsSuccessStatusCode)
-                return false;
-
-            var players = _playerService.GetAll();
-
-            foreach (var item in players)
-            {
-                string serializedItem = JsonConvert.SerializeObject(item);
-                request = await client.PostAsync("players", new StringContent(serializedItem, Encoding.UTF8, "application/json"));
-                if (!request.IsSuccessStatusCode)
-                    return false;
-            }
-
-            return true;
-        }
-
-        public async Task<bool> RestoreBackup() //Restore from RemoteRepository
-        {
-
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:21094/api/");
-            client.DefaultRequestHeaders.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            var requestResult = await client.GetAsync("players");
-
-            if (!requestResult.IsSuccessStatusCode)
-                return false; //Could not restore the backup
-
-            string serializedItems = await requestResult.Content.ReadAsStringAsync();
-            IEnumerable<Player> restoredItems = JsonConvert
-                .DeserializeObject<IEnumerable<Player>>(serializedItems);
-
-            RemoveAll();
-            foreach (var item in restoredItems)
-            {
-                await AddSync(item);
-            }
-
-            return true;
-        }
     }
 }
