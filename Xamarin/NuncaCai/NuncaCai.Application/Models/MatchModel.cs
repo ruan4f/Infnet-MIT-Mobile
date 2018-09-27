@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NuncaCai.Api.REST.Model
+namespace NuncaCai.Application.Models
 {
     public class MatchModel
     {

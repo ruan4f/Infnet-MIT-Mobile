@@ -33,15 +33,17 @@ namespace Infra.Data.SQLServer.Repository
             await _context.SaveChangesAsync();
         }
 
-        public async Task AddSync(Guid id, Guid player1Id, Guid player2Id, Guid winnerId)
+        public async Task AddSync(Guid id, Guid player1Id, Guid player2Id, Guid winnerId, DateTime date)
         {
+            Match newMatch = new Match(id, date);
+
             var player1 = await _context.Players.FindAsync(player1Id);
             var player2 = await _context.Players.FindAsync(player2Id);
             var winner = await _context.Players.FindAsync(winnerId);
 
-            var match = new Match(id, player1, player2, winner);
+            await _context.Matches.AddAsync(newMatch);
 
-            await _context.Matches.AddAsync(match);
+            newMatch.MatchesPlayed.Add(new MatchPlayed(newMatch, player1, player2, winner));
 
             await _context.SaveChangesAsync();
         }
@@ -55,6 +57,11 @@ namespace Infra.Data.SQLServer.Repository
                                 .ThenInclude(mp => mp.Player2)
                             .Include(m => m.MatchesPlayed)
                                 .ThenInclude(mp => mp.Winner);
+        }
+
+        public IEnumerable<Match> GetSimpleAll()
+        {
+            return _context.Matches;
         }
 
         public async Task<Match> GetByIdSync(Guid id)

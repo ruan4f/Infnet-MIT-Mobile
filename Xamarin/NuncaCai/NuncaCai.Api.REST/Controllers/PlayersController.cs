@@ -23,7 +23,7 @@ namespace NuncaCai.Api.REST.Controllers
         public IEnumerable<Player> GetPlayers()
         {
             return _service.GetAll();
-        }
+        }       
 
         //GET: api/Players/5
         [HttpGet("{id}")]
@@ -74,38 +74,7 @@ namespace NuncaCai.Api.REST.Controllers
             await _service.AddPointSync(id);
 
             return NoContent();
-        }
-
-        [HttpPost]
-        [Route("execute-backup")]
-        public async Task<IActionResult> BackupPlayer([FromBody] List<Player> players)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            foreach (var player in players)
-            {
-                await _service.AddSync(player);
-            }
-
-            return Ok();
-        }
-
-        [HttpGet]
-        [Route("restore-backup")]
-        public IActionResult RestoreBackupMatch()
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var players = _service.GetAll();
-
-            return Ok(players);
-        }
+        }       
 
         //POST: api/Players
         [HttpPost]

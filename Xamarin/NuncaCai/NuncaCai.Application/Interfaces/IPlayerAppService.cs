@@ -18,5 +18,8 @@ namespace NuncaCai.Application.Interfaces
         Task<Player> GetByIdSync(Guid id);
 
         void RemoveAll();
+
+        Task<bool> ExecuteBackup();
+        Task<bool> RestoreBackup();
     }
 }

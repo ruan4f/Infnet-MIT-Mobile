@@ -1,10 +1,12 @@
 ﻿using DomainModel.Entities;
 using DomainModel.Interfaces.Services;
+using Newtonsoft.Json;
 using NuncaCai.Application.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace NuncaCai.Application.Services
@@ -18,7 +20,7 @@ namespace NuncaCai.Application.Services
         {
             _playerService = playerService;
         }
-        
+
         public async Task AddPointSync(Guid id)
         {
             await _playerService.AddPointSync(id);
@@ -52,46 +54,49 @@ namespace NuncaCai.Application.Services
         public async Task<bool> ExecuteBackup() //Backup to RemoteRepository
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:55127/api/");
+            client.BaseAddress = new Uri("http://localhost:21094/api/");
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             var request = await client.DeleteAsync("players");
             if (!request.IsSuccessStatusCode)
                 return false;
-            //foreach (var item in Items)
-            //{
-            //    string serializedItem = Newtonsoft.Json.JsonConvert.SerializeObject(item);
-            //    request = await client.PostAsync("items", new StringContent(serializedItem, Encoding.UTF8, "application/json"));
-            //    if (!request.IsSuccessStatusCode)
-            //        return false;
-            //}
+
+            var players = _playerService.GetAll();
+
+            foreach (var item in players)
+            {
+                string serializedItem = JsonConvert.SerializeObject(item);
+                request = await client.PostAsync("players", new StringContent(serializedItem, Encoding.UTF8, "application/json"));
+                if (!request.IsSuccessStatusCode)
+                    return false;
+            }
+
             return true;
         }
 
         public async Task<bool> RestoreBackup() //Restore from RemoteRepository
         {
-            
+
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:55127/api/");
+            client.BaseAddress = new Uri("http://localhost:21094/api/");
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            
+
             var requestResult = await client.GetAsync("players");
 
             if (!requestResult.IsSuccessStatusCode)
                 return false; //Could not restore the backup
 
-            //string serializedItems = await requestResult.Content.ReadAsStringAsync();
-            //IEnumerable<Item> restoredItems = JsonConvert
-            //    .DeserializeObject<IEnumerable<Item>>(serializedItems)
-            //    .OrderBy(i => i.PublishDateTime);
+            string serializedItems = await requestResult.Content.ReadAsStringAsync();
+            IEnumerable<Player> restoredItems = JsonConvert
+                .DeserializeObject<IEnumerable<Player>>(serializedItems);
 
-            //RemoveAllItems();
-            //foreach (var item in restoredItems)
-            //{
-            //    AddItem(item);
-            //}
+            RemoveAll();
+            foreach (var item in restoredItems)
+            {
+                await AddSync(item);
+            }
 
             return true;
         }
