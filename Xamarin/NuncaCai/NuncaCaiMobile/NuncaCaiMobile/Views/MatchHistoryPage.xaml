@@ -16,7 +16,7 @@
                 SeparatorColor="Black">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
+                        <ViewCell Height="40">
                             <Grid RowSpacing="1" ColumnSpacing="0" Margin="5, 2,5,2">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -26,12 +26,14 @@
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
 
-                                <Label Grid.Row="0" Grid.Column="0" x:Name="lblPlayer1" Text="{Binding MatchPlayed.Player1.Name}" TextColor="Black" FontSize="16" 
-                                           HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand"                                           
+                                <Label Grid.Row="0" Grid.Column="0" x:Name="lblPlayer1" Text="{Binding MatchPlayed.Player1.Name}" TextColor="White" FontSize="16" 
+                                           HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand"                                  
+                                           VerticalTextAlignment="Center"    
                                            BackgroundColor="{Binding MatchPlayed.Player1Winner, Converter={StaticResource BackgroundWinnerConverter}}"/>
 
-                                <Label Grid.Row="0" Grid.Column="1" x:Name="lblPlayer2" Text="{Binding MatchPlayed.Player2.Name}" TextColor="Black" FontSize="16" 
+                                <Label Grid.Row="0" Grid.Column="1" x:Name="lblPlayer2" Text="{Binding MatchPlayed.Player2.Name}" TextColor="White" FontSize="16" 
                                            HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" 
+                                           VerticalTextAlignment="Center"
                                            BackgroundColor="{Binding MatchPlayed.Player2Winner, Converter={StaticResource BackgroundWinnerConverter}}" />
                             </Grid>
 

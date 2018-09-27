@@ -1,5 +1,6 @@
 ﻿using NuncaCaiMobile.Views;
 using System;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace NuncaCaiMobile
@@ -33,24 +34,42 @@ namespace NuncaCaiMobile
 
         private async void Backup_Activated(object sender, EventArgs e)
         {
-            bool result = await App.BackupService.ExecuteBackup();
-            if (!result)
+            var current = Connectivity.NetworkAccess;
+
+            if (current == NetworkAccess.Internet)
+            {
+                bool result = await App.BackupService.ExecuteBackup();
+                if (!result)
+                {
+                    await DisplayAlert("Backup", "Error ao tentar realizar o backup. Verifica sua conexão com internet e tente novamente!", "Ok");
+                    return;
+                }
+                await DisplayAlert("Backup", "Backup Feito!", "Ok");
+            }
+            else
             {
                 await DisplayAlert("Backup", "Error ao tentar realizar o backup. Verifica sua conexão com internet e tente novamente!", "Ok");
-                return;
             }
-            await DisplayAlert("Backup", "Backup Feito!", "Ok");
         }
 
         private async void RestoreBackup_Activated(object sender, EventArgs e)
         {
-            bool result = await App.BackupService.RestoreBackup();            
-            if (!result)
+            var current = Connectivity.NetworkAccess;
+
+            if (current == NetworkAccess.Internet)
+            {
+                bool result = await App.BackupService.RestoreBackup();
+                if (!result)
+                {
+                    await DisplayAlert("Backup", "Error ao tentar restaurar o backup. Verifica sua conexão com internet e tente novamente!", "Ok");
+                    return;
+                }
+                await DisplayAlert("Backup", "Backup Restaurado!", "Ok");
+            }
+            else
             {
                 await DisplayAlert("Backup", "Error ao tentar restaurar o backup. Verifica sua conexão com internet e tente novamente!", "Ok");
-                return;
-            }
-            await DisplayAlert("Backup", "Backup Restaurado!", "Ok");
+            }            
         }
     }
 }

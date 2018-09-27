@@ -8,9 +8,6 @@ namespace DomainModel.Entities
     {
         public Player()
         {
-            //FirstMatches = new List<Match>();
-            //SecondMatches = new List<Match>();
-            //WinnerMatches = new List<Match>();
             FirstMatchesPlayed = new HashSet<MatchPlayed>();
             SecondMatchesPlayed = new HashSet<MatchPlayed>();
             WinnerMatchesPlayed = new HashSet<MatchPlayed>();
@@ -27,9 +24,6 @@ namespace DomainModel.Entities
             SecondMatchesPlayed = new HashSet<MatchPlayed>();
             WinnerMatchesPlayed = new HashSet<MatchPlayed>();
 
-            //FirstMatches = new List<Match>();
-            //SecondMatches = new List<Match>();
-            //WinnerMatches = new List<Match>();
         }
 
         public Guid PlayerId { get; set; }
@@ -44,9 +38,6 @@ namespace DomainModel.Entities
         public virtual ICollection<MatchPlayed> SecondMatchesPlayed { get; set; }
         public virtual ICollection<MatchPlayed> WinnerMatchesPlayed { get; set; }
 
-        //public virtual ICollection<Match> FirstMatches { get; set; }
-        //public virtual ICollection<Match> SecondMatches { get; set; }
-        //public virtual ICollection<Match> WinnerMatches { get; set; }
 
     }
 }
