@@ -5,6 +5,7 @@
              x:Class="NuncaCaiMobile.Views.MatchHistoryPage"
              Title="Histórico de Partidas">
     <ContentPage.Resources>
+        <StyleSheet Source="/Assets/styles.css" />
         <local:BackgroundWinnerConverter x:Key="BackgroundWinnerConverter" />
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -13,7 +14,7 @@
                 ItemsSource="{Binding Matches}"
                 CachingStrategy="RecycleElement"
                 HasUnevenRows="True"
-                SeparatorColor="Black">
+                SeparatorColor="White">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell Height="40">

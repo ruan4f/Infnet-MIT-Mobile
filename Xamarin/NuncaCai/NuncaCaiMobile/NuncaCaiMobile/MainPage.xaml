@@ -4,27 +4,19 @@
              xmlns:local="clr-namespace:NuncaCaiMobile"
              x:Class="NuncaCaiMobile.MainPage"
              Title="Nunca Cai">
+    <ContentPage.Resources>
+        <StyleSheet Source="/Assets/styles.css" />
+    </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem Name="Backup" Order="Primary" Text="Backup" Priority="0" Activated="Backup_Activated" />
         <ToolbarItem Name="RestoreBackup" Order="Primary" Text="Restaurar Backup" Priority="1" Activated="RestoreBackup_Activated" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <Grid RowSpacing="1" ColumnSpacing="1" Margin="5,2,5,2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <Button Grid.Row="0" Grid.Column="0" x:Name="Btn_Players" Text="Jogadores" Clicked="Btn_Players_Clicked"/>
-            <Button Grid.Row="0" Grid.Column="1" x:Name="Btn_Sort" Text="Sortear Duplas" Clicked="Btn_Sort_Clicked"/>
-            <Button Grid.Row="1" Grid.Column="0" x:Name="Btn_MatchHistory"  Text="Histórico de Partidas" Clicked="Btn_MatchHistory_Clicked"/>
-            <Button Grid.Row="1" Grid.Column="1" x:Name="Btn_Ranking" Text="Ranking" Clicked="Btn_Ranking_Clicked"/>
-            
-        </Grid>
-        
+        <StackLayout Margin="15">
+            <Button StyleClass="btn-main-primary" x:Name="Btn_Players" Text="Jogadores" Clicked="Btn_Players_Clicked"/>
+            <Button StyleClass="btn-main-primary" x:Name="Btn_Sort" Text="Sortear Duplas" Clicked="Btn_Sort_Clicked"/>
+            <Button StyleClass="btn-main-primary" x:Name="Btn_MatchHistory"  Text="Histórico de Partidas" Clicked="Btn_MatchHistory_Clicked"/>
+            <Button StyleClass="btn-main-primary" x:Name="Btn_Ranking" Text="Ranking" Clicked="Btn_Ranking_Clicked"/>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

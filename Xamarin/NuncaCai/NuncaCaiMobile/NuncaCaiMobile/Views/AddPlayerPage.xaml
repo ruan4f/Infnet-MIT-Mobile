@@ -3,10 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NuncaCaiMobile.Views.AddPlayerPage"
              Title="Adicionar Jogador">
+    <ContentPage.Resources>
+        <StyleSheet Source="/Assets/styles.css" />
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Margin="15"> 
             <Entry x:Name="Txt_Name" Placeholder="Nome" Text="{Binding Name,Mode=OneWayToSource}"/>
-            <Button x:Name="Btn_Add_Player" Text="Salvar" Command="{Binding AddCommand}"/>            
+            <Button x:Name="Btn_Add_Player" StyleClass="btn-primary" Text="Salvar" Command="{Binding AddCommand}"/>            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

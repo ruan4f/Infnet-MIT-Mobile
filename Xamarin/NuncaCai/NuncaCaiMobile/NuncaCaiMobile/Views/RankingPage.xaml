@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NuncaCaiMobile.Views.RankingPage"
              Title="Ranking">
+    <ContentPage.Resources>
+        <StyleSheet Source="/Assets/styles.css" />
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Margin="15">
             <ListView x:Name="ListView_Players"

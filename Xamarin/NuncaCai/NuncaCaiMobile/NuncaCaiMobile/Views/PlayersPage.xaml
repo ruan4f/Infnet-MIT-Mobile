@@ -3,24 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NuncaCaiMobile.Views.PlayersPage"
              Title="Jogadores">
+    <ContentPage.Resources>
+        <StyleSheet Source="/Assets/styles.css" />
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Margin="15">
-            <ListView x:Name="ListView_Players"
+            <ListView x:Name="ListView_Players" StyleClass="listiew-primary"
                 CachingStrategy="RecycleElement"
                 HasUnevenRows="True"
-                SeparatorColor="Black">
+                SeparatorColor="White">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="10">
-                                <Label x:Name="LabelName" Text="{Binding Name}" TextColor="Black" FontSize="16" LineBreakMode="NoWrap"/>
+                                <Label x:Name="LabelName" Text="{Binding Name}" LineBreakMode="NoWrap"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Button x:Name="Btn_AddPlayer" Text="Novo Jogador" HorizontalOptions="FillAndExpand" Command="{Binding ShowAddCommand}"/>
+            <Button x:Name="Btn_AddPlayer" StyleClass="btn-primary" Text="Novo Jogador" HorizontalOptions="FillAndExpand" Command="{Binding ShowAddCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

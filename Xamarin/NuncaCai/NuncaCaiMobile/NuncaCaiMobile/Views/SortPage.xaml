@@ -4,6 +4,9 @@
              x:Class="NuncaCaiMobile.Views.SortPage"
              x:Name="SortView"
              Title="Sortear Duplas">
+    <ContentPage.Resources>
+        <StyleSheet Source="/Assets/styles.css" />
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Margin="15">
 
