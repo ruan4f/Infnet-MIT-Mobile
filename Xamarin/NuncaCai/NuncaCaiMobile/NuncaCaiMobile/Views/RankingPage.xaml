@@ -12,7 +12,7 @@
                 ItemsSource="{Binding Players}"
                 CachingStrategy="RecycleElement"
                 HasUnevenRows="True"
-                SeparatorColor="Black">
+                SeparatorColor="White">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -26,8 +26,8 @@
                                         <RowDefinition Height="Auto"></RowDefinition>
                                     </Grid.RowDefinitions>
 
-                                    <Label Grid.Column="0" Grid.Row="0" x:Name="LabelName" Text="{Binding Name}" TextColor="Black" FontSize="16" LineBreakMode="NoWrap"/>
-                                    <Label Grid.Column="1" Grid.Row="0" x:Name="LabelPoint" Text="{Binding Point}" TextColor="Black" FontSize="16" LineBreakMode="NoWrap" HorizontalOptions="EndAndExpand"/>                                   
+                                    <Label Grid.Column="0" Grid.Row="0" x:Name="LabelName" Text="{Binding Name}" LineBreakMode="NoWrap"/>
+                                    <Label Grid.Column="1" Grid.Row="0" x:Name="LabelPoint" Text="{Binding Point}" LineBreakMode="NoWrap" HorizontalOptions="EndAndExpand"/>                                   
 
                                 </Grid>                                
                             </StackLayout>

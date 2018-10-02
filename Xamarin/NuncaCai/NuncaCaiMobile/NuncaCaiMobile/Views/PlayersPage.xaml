@@ -8,7 +8,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Margin="15">
-            <ListView x:Name="ListView_Players" StyleClass="listiew-primary"
+            <ListView x:Name="ListView_Players"
                 CachingStrategy="RecycleElement"
                 HasUnevenRows="True"
                 SeparatorColor="White">

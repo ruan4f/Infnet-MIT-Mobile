@@ -28,6 +28,12 @@ namespace NuncaCaiMobile
             BackupService = new BackupAppService(matchService, playerService);
 
             MainPage = new NavigationPage(new MainPage());
+            
+            //Background color
+            MainPage.SetValue(NavigationPage.BarBackgroundColorProperty, "#f53d3d");
+
+            //Title color
+            MainPage.SetValue(NavigationPage.BarTextColorProperty, Color.White);
         }
 
         protected override void OnStart()

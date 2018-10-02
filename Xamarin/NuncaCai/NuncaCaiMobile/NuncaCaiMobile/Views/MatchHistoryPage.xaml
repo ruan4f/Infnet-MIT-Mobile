@@ -27,12 +27,12 @@
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
 
-                                <Label Grid.Row="0" Grid.Column="0" x:Name="lblPlayer1" Text="{Binding MatchPlayed.Player1.Name}" TextColor="White" FontSize="16" 
+                                <Label Grid.Row="0" Grid.Column="0" x:Name="lblPlayer1" Text="{Binding MatchPlayed.Player1.Name}"
                                            HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand"                                  
                                            VerticalTextAlignment="Center"    
                                            BackgroundColor="{Binding MatchPlayed.Player1Winner, Converter={StaticResource BackgroundWinnerConverter}}"/>
 
-                                <Label Grid.Row="0" Grid.Column="1" x:Name="lblPlayer2" Text="{Binding MatchPlayed.Player2.Name}" TextColor="White" FontSize="16" 
+                                <Label Grid.Row="0" Grid.Column="1" x:Name="lblPlayer2" Text="{Binding MatchPlayed.Player2.Name}"
                                            HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" 
                                            VerticalTextAlignment="Center"
                                            BackgroundColor="{Binding MatchPlayed.Player2Winner, Converter={StaticResource BackgroundWinnerConverter}}" />
