@@ -162,7 +162,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="trophy.json" />
+    <None Include="Assets\trophy.json" />
+    <Content Include="trophy.json" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
