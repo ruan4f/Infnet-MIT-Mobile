@@ -3,6 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NuncaCaiMobile.App">
     <Application.Resources>
-
+        <ResourceDictionary>           
+            <Style x:Key="entryStyle" TargetType="Entry">                
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="PlaceholderColor" Value="White" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

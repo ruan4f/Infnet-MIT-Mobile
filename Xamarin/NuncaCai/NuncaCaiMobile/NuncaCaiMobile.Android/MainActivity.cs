@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Lottie.Forms.Droid;
 
 namespace NuncaCaiMobile.Droid
 {
@@ -19,7 +20,11 @@ namespace NuncaCaiMobile.Droid
 
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
+            AnimationViewRenderer.Init();
+
             LoadApplication(new App());
+            Window.SetStatusBarColor(Android.Graphics.Color.Rgb(245, 61, 61));
         }
     }
 }

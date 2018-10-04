@@ -7,8 +7,8 @@
         <StyleSheet Source="/Assets/styles.css" />
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Margin="15"> 
-            <Entry x:Name="Txt_Name" Placeholder="Nome" Text="{Binding Name,Mode=OneWayToSource}"/>
+        <StackLayout Margin="15">
+            <Entry x:Name="Txt_Name" Placeholder="Nome" Text="{Binding Name,Mode=OneWayToSource}" Style="{StaticResource entryStyle}"/>
             <Button x:Name="Btn_Add_Player" StyleClass="btn-primary" Text="Salvar" Command="{Binding AddCommand}"/>            
         </StackLayout>
     </ContentPage.Content>

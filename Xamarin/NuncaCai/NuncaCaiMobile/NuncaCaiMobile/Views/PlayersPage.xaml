@@ -16,7 +16,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="10">
-                                <Label x:Name="LabelName" Text="{Binding Name}" LineBreakMode="NoWrap"/>
+                                <Label x:Name="LabelName" Text="{Binding Name}" VerticalTextAlignment="Center" LineBreakMode="NoWrap"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

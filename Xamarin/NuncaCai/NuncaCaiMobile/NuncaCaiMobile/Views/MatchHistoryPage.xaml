@@ -9,12 +9,12 @@
         <local:BackgroundWinnerConverter x:Key="BackgroundWinnerConverter" />
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Margin="15">
             <ListView 
                 ItemsSource="{Binding Matches}"
                 CachingStrategy="RecycleElement"
                 HasUnevenRows="True"
-                SeparatorColor="White">
+                SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell Height="40">

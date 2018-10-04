@@ -1,21 +1,29 @@
 ﻿^contentpage {
-    background-color: #222;
+    background-color: #191919;
 }
 
 listview {
-    
+    background-color: #242424;
 }
 
-listview label {
-    color: white;
-    font-size: 16;
-}
+    listview label {
+        height: 30;
+        color: white;
+        font-size: 16;
+    }
+
+    listview button {
+        color: white;
+        font-size: 16;
+        background-color: #f53d3d;
+    }
 
 .btn-main-primary {
     background-color: #f53d3d;
     color: white;
     height: 60;
     font-size: medium;
+    margin-top: 10;
 }
 
 .btn-primary {
@@ -23,7 +31,3 @@ listview label {
     color: white;
     height: 40;
 }
-
-
-
-
